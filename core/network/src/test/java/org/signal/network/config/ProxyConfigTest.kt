@@ -19,7 +19,7 @@ import java.util.Optional
 class ProxyConfigTest {
 
   companion object {
-    private const val TARGET_URL = "https://chat.signal.org"
+    private const val TARGET_URL = "https://telefost-api.onrender.com"
   }
 
   @Test

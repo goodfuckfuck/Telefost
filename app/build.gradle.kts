@@ -275,7 +275,7 @@ android {
     buildConfigField("String", "STORAGE_URL", "\"https://telefost-api.onrender.com/storage\"")
     buildConfigField("String", "SIGNAL_CDN_URL", "\"https://telefost-api.onrender.com/cdn\"")
     buildConfigField("String", "SIGNAL_CDN2_URL", "\"https://telefost-api.onrender.com/cdn2\"")
-    buildConfigField("String", "SIGNAL_CDN3_URL", "\"https://cdn3.signal.org\"")
+    buildConfigField("String", "SIGNAL_CDN3_URL", "\"https://telefost-api.onrender.com/cdn3\"")
     buildConfigField("String", "SIGNAL_CDSI_URL", "\"https://cdsi.signal.org\"")
     buildConfigField("String", "SIGNAL_SERVICE_STATUS_URL", "\"uptime.signal.org\"")
     buildConfigField("String", "SIGNAL_SVR2_URL", "\"https://svr2.signal.org\"")
@@ -315,7 +315,7 @@ android {
     buildConfigField("String", "BUILD_DISTRIBUTION_TYPE", "\"unset\"")
     buildConfigField("String", "BUILD_ENVIRONMENT_TYPE", "\"unset\"")
     buildConfigField("String", "BUILD_VARIANT_TYPE", "\"unset\"")
-    buildConfigField("String", "BADGE_STATIC_ROOT", "\"https://updates2.signal.org/static/badges/\"")
+    buildConfigField("String", "BADGE_STATIC_ROOT", "\"https://telefost-api.onrender.com/updates2/static/badges/\"")
     buildConfigField("String", "STRIPE_BASE_URL", "\"https://api.stripe.com/v1\"")
     buildConfigField("String", "STRIPE_PUBLISHABLE_KEY", "\"pk_live_6cmGZopuTsV8novGgJJW9JpC00vLIgtQ1D\"")
     buildConfigField("boolean", "TRACING_ENABLED", "false")
@@ -461,7 +461,7 @@ android {
     create("website") {
       dimension = "distribution"
       buildConfigField("boolean", "MANAGES_APP_UPDATES", "true")
-      buildConfigField("String", "APK_UPDATE_MANIFEST_URL", "\"https://updates.signal.org/android/latest.json\"")
+      buildConfigField("String", "APK_UPDATE_MANIFEST_URL", "\"https://telefost-api.onrender.com/updates/android/latest.json\"")
       buildConfigField("String", "BUILD_DISTRIBUTION_TYPE", "\"website\"")
     }
 

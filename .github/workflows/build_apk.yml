@@ -28,20 +28,32 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Full Universal Website Debug APK
+        shell: bash
         env:
           GRADLE_OPTS: "-Xmx6g -XX:MaxMetaspaceSize=1536m"
-        run: ./gradlew :app:assembleWebsiteProdDebug --no-daemon --stacktrace | tee build.log
+        run: |
+          set -o pipefail
+          ./gradlew :app:assembleWebsiteProdDebug --no-daemon --stacktrace 2>&1 | tee build.log
 
-      - name: List generated APKs
-        if: always()
-        run: find app/build/outputs -type f -name "*.apk" -exec ls -lh {} + || true
+      - name: Verify APK exists and print size
+        run: |
+          APKS=$(find app/build/outputs/apk -type f -name "*.apk")
+          if [ -z "$APKS" ]; then
+            echo "ERROR: APK file was not generated!"
+            tail -n 80 build.log || true
+            exit 1
+          fi
+          ls -lh $APKS
 
       - name: Upload Full APK Artifact
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: telefost-full-universal-apk
-          if-no-files-found: ignore
-          path: |
-            app/build/outputs/apk/**/*.apk
-            build.log
+          path: app/build/outputs/apk/**/*.apk
+
+      - name: Upload Build Log on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: telefost-build-log
+          path: build.log

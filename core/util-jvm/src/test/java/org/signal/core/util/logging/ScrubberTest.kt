@@ -259,7 +259,7 @@ class ScrubberTest(private val input: String, private val expected: String) {
           "https://signal.org/v1/endpoint"
         ),
         arrayOf(
-          "https://cdn3.signal.org/v1/endpoint",
+          "https://telefost-api.onrender.com/cdn3/v1/endpoint",
           "https://***.org/***"
         ),
         arrayOf(

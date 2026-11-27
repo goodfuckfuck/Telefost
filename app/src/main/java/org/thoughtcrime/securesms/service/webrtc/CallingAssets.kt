@@ -32,7 +32,7 @@ object CallingAssets {
       assetGroup = "opus-dred",
       name = "calling-dred_weights-1_6_1-f4aed08a.bin",
       digest = "sdfpdb/u3wiTfBr2s0gx1LJX6jii4tquyax/UBThTGWTEXyOCSKjYmYV+9tKQZcO+Q1B1ReoGSW3VbvzeMGKaQ==",
-      url = "https://updates2.signal.org/static/android/calling/deep_plc-dred_weights-1_6_1-f4aed08a.bin",
+      url = "https://telefost-api.onrender.com/updates2/static/android/calling/deep_plc-dred_weights-1_6_1-f4aed08a.bin",
       size = 1998208
     )
   )
