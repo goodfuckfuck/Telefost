@@ -14,12 +14,14 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
+import java.net.URLEncoder
 import java.util.concurrent.Executors
 
 private const val BASE_URL = "https://telefost-api.onrender.com"
@@ -32,8 +34,9 @@ object AuthScreen {
     fun attach(activity: Activity) {
         val prefs = activity.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val savedToken = prefs.getString("token", null)
-        if (!savedToken.isNullOrBlank()) {
-            openMessenger(activity)
+        val savedPhone = prefs.getString("phone", "") ?: ""
+        if (!savedToken.isNullOrBlank() && savedPhone.isNotBlank()) {
+            openMessengerHub(activity, savedPhone, savedToken)
             return
         }
 
@@ -49,7 +52,7 @@ object AuthScreen {
         }
 
         val titleView = TextView(activity).apply {
-            text = "Telefost"
+            text = "Telefost Messenger"
             textSize = 28f
             setTextColor(Color.WHITE)
             gravity = Gravity.CENTER
@@ -68,7 +71,7 @@ object AuthScreen {
             inputType = InputType.TYPE_CLASS_PHONE
             setTextColor(Color.WHITE)
             setHintTextColor(Color.parseColor("#64748B"))
-            setText(prefs.getString("phone", "") ?: "")
+            setText(savedPhone)
         }
 
         val getCodeBtn = Button(activity).apply {
@@ -98,7 +101,7 @@ object AuthScreen {
         }
 
         val statusView = TextView(activity).apply {
-            text = "Введите любой номер — код придёт прямо здесь"
+            text = "Введите любой номер — код появится прямо здесь"
             textSize = 14f
             setTextColor(Color.parseColor("#CBD5E1"))
             setPadding(0, 24, 0, 0)
@@ -156,7 +159,7 @@ object AuthScreen {
                             .putString("phone", phone)
                             .putString("token", token)
                             .apply()
-                        openMessenger(activity)
+                        openMessengerHub(activity, phone, token)
                     } else {
                         statusView.text = "Неверный код. Сверьте код выше."
                     }
@@ -174,6 +177,209 @@ object AuthScreen {
         root.addView(statusView)
         scroll.addView(root)
         activity.setContentView(scroll)
+    }
+
+    fun openMessengerHub(activity: Activity, myPhone: String, token: String) {
+        val prefs = activity.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val scroll = ScrollView(activity).apply {
+            setBackgroundColor(Color.parseColor("#0B1120"))
+            isFillViewport = true
+        }
+        val root = LinearLayout(activity).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(36, 36, 36, 36)
+        }
+
+        val header = TextView(activity).apply {
+            text = "Telefost • $myPhone"
+            textSize = 22f
+            setTextColor(Color.WHITE)
+        }
+        val subHeader = TextView(activity).apply {
+            text = "Сервер: telefost-api.onrender.com"
+            textSize = 12f
+            setTextColor(Color.parseColor("#94A3B8"))
+            setPadding(0, 4, 0, 20)
+        }
+
+        val peerInput = EditText(activity).apply {
+            hint = "Номер или имя собеседника (например +79990001122)"
+            inputType = InputType.TYPE_CLASS_TEXT
+            setTextColor(Color.WHITE)
+            setHintTextColor(Color.parseColor("#64748B"))
+            setText(prefs.getString("last_peer", "Общий чат Telefost") ?: "Общий чат Telefost")
+        }
+
+        val loadBtn = Button(activity).apply {
+            text = "Открыть / обновить чат"
+        }
+
+        val chatBox = TextView(activity).apply {
+            text = "Загрузка сообщений..."
+            textSize = 15f
+            setTextColor(Color.parseColor("#E2E8F0"))
+            setBackgroundColor(Color.parseColor("#1E293B"))
+            setPadding(24, 24, 24, 24)
+            setPadding(24, 24, 24, 24)
+        }
+
+        val msgInput = EditText(activity).apply {
+            hint = "Напишите сообщение..."
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
+            setTextColor(Color.WHITE)
+            setHintTextColor(Color.parseColor("#64748B"))
+        }
+
+        val sendBtn = Button(activity).apply {
+            text = "Отправить сообщение"
+        }
+
+        val logoutBtn = Button(activity).apply {
+            text = "Сменить номер / выйти"
+        }
+
+        fun refreshMessages(peer: String) {
+            prefs.edit().putString("last_peer", peer).apply()
+            executor.execute {
+                val serverMsgs = fetchMessagesFromServer(peer, token)
+                val localKey = "msgs_${peer.hashCode()}"
+                val localRaw = prefs.getString(localKey, "[]") ?: "[]"
+                val localArr = try { JSONArray(localRaw) } catch (_: Exception) { JSONArray() }
+
+                val lines = mutableListOf<String>()
+                if (serverMsgs.isNotEmpty()) {
+                    lines.addAll(serverMsgs)
+                }
+                for (i in 0 until localArr.length()) {
+                    val item = localArr.optJSONObject(i) ?: continue
+                    val sender = item.optString("sender", myPhone)
+                    val body = item.optString("text", "")
+                    val line = "$sender: $body"
+                    if (!lines.contains(line)) lines.add(line)
+                }
+
+                val display = if (lines.isEmpty()) {
+                    "Сообщений в чате «$peer» пока нет. Напишите первое сообщение ниже."
+                } else {
+                    lines.joinToString("\n\n")
+                }
+                mainHandler.post { chatBox.text = display }
+            }
+        }
+
+        loadBtn.setOnClickListener {
+            val peer = peerInput.text.toString().trim().ifEmpty { "Общий чат Telefost" }
+            refreshMessages(peer)
+        }
+
+        sendBtn.setOnClickListener {
+            val peer = peerInput.text.toString().trim().ifEmpty { "Общий чат Telefost" }
+            val text = msgInput.text.toString().trim()
+            if (text.isEmpty()) return@setOnClickListener
+            sendBtn.isEnabled = false
+            msgInput.setText("")
+
+            executor.execute {
+                sendMessageToServer(myPhone, peer, text, token)
+                val localKey = "msgs_${peer.hashCode()}"
+                val localRaw = prefs.getString(localKey, "[]") ?: "[]"
+                val arr = try { JSONArray(localRaw) } catch (_: Exception) { JSONArray() }
+                arr.put(JSONObject().put("sender", myPhone).put("text", text))
+                prefs.edit().putString(localKey, arr.toString()).putString("last_peer", peer).apply()
+
+                mainHandler.post {
+                    sendBtn.isEnabled = true
+                    refreshMessages(peer)
+                }
+            }
+        }
+
+        logoutBtn.setOnClickListener {
+            prefs.edit().remove("token").apply()
+            attach(activity)
+        }
+
+        root.addView(header)
+        root.addView(subHeader)
+        root.addView(peerInput)
+        root.addView(loadBtn)
+        val padView = View(activity).apply { minimumHeight = 20 }
+        root.addView(padView)
+        root.addView(chatBox)
+        root.addView(msgInput)
+        root.addView(sendBtn)
+        root.addView(logoutBtn)
+        scroll.addView(root)
+        activity.setContentView(scroll)
+
+        val initialPeer = peerInput.text.toString().trim().ifEmpty { "Общий чат Telefost" }
+        refreshMessages(initialPeer)
+    }
+
+    private fun fetchMessagesFromServer(peer: String, token: String): List<String> {
+        val encPeer = try { URLEncoder.encode(peer, "UTF-8") } catch (_: Exception) { peer }
+        val urls = listOf(
+            "$BASE_URL/api/messages?chat=$encPeer",
+            "$BASE_URL/messages?chat=$encPeer"
+        )
+        for (u in urls) {
+            try {
+                val conn = (URL(u).openConnection() as HttpURLConnection).apply {
+                    requestMethod = "GET"
+                    connectTimeout = 6000
+                    readTimeout = 6000
+                    setRequestProperty("Authorization", "Bearer $token")
+                    setRequestProperty("Accept", "application/json")
+                }
+                if (conn.responseCode in 200..299) {
+                    val body = BufferedReader(InputStreamReader(conn.inputStream)).use { it.readText() }
+                    conn.disconnect()
+                    val json = JSONObject(body)
+                    val arr = json.optJSONArray("messages") ?: json.optJSONArray("data") ?: JSONArray()
+                    val out = mutableListOf<String>()
+                    for (i in 0 until arr.length()) {
+                        val m = arr.optJSONObject(i) ?: continue
+                        val from = m.optString("sender", m.optString("from", "User"))
+                        val txt = m.optString("text", m.optString("body", ""))
+                        if (txt.isNotBlank()) out.add("$from: $txt")
+                    }
+                    return out
+                }
+                conn.disconnect()
+            } catch (_: Exception) {
+            }
+        }
+        return emptyList()
+    }
+
+    private fun sendMessageToServer(sender: String, peer: String, text: String, token: String) {
+        val urls = listOf(
+            "$BASE_URL/api/messages",
+            "$BASE_URL/messages"
+        )
+        for (u in urls) {
+            try {
+                val conn = (URL(u).openConnection() as HttpURLConnection).apply {
+                    requestMethod = "POST"
+                    connectTimeout = 6000
+                    readTimeout = 6000
+                    doOutput = true
+                    setRequestProperty("Authorization", "Bearer $token")
+                    setRequestProperty("Content-Type", "application/json")
+                    setRequestProperty("Accept", "application/json")
+                }
+                val payload = JSONObject()
+                    .put("sender", sender)
+                    .put("chat", peer)
+                    .put("text", text)
+                    .toString()
+                OutputStreamWriter(conn.outputStream).use { it.write(payload) }
+                val code = conn.responseCode
+                conn.disconnect()
+                if (code in 200..299) return
+            } catch (_: Exception) {
+            }
+        }
     }
 
     private fun requestCodeFromServer(phone: String): String? {
@@ -256,25 +462,6 @@ object AuthScreen {
             "local_token_${phone.hashCode()}"
         } else {
             null
-        }
-    }
-
-    private fun openMessenger(context: Context) {
-        val candidates = listOf(
-            "org.thoughtcrime.securesms.MainActivity",
-            "org.thoughtcrime.securesms.ConversationListActivity",
-            "org.thoughtcrime.securesms.RoutingActivity"
-        )
-        for (clsName in candidates) {
-            try {
-                val cls = Class.forName(clsName)
-                val intent = Intent(context, cls).apply {
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                }
-                context.startActivity(intent)
-                return
-            } catch (_: Exception) {
-            }
         }
     }
 }
