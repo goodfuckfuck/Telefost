@@ -440,8 +440,31 @@
     <string name="preferences_normal">Normal</string>
     <!-- Preference summary for compact navigation bar size -->
     <string name="preferences_compact">Kompakt</string>
+
+    <!-- AppearanceSettingsScreen -->
     <!-- Dialog message body explaining that we have to restart the app in order to apply the user\'s new language setting.  -->
     <string name="preferences_language_change_confirmation_message">Appen starter på nytt for å bytte til det nye språket.</string>
+    <!-- Dialog message body shown when selecting a language that hasn\'t been downloaded yet, notifying the user that a download will happen and then restart. -->
+    <string name="preferences_language_change_download_confirmation_message">Språkpakken lastes ned, og deretter startes appen på nytt med de nye språkinnstillingene.</string>
+    <!-- Dialog message shown while a language pack is being downloaded after the user picks a language. -->
+    <string name="preferences_language_change_downloading_message">Laster ned språkpakken …</string>
+    <!-- Dialog message shown when downloading a language pack fails for a reason that trying again may fix. %1$d is Google Play\'s numeric error code, for example -6, shown so the user can report it. -->
+    <string name="preferences_language_change_download_failed_message">Språkpakken kunne ikke lastes ned (feil %1$d). Sjekk internettilkoblingen, og prøv på nytt.</string>
+    <!-- Dialog message shown when downloading a language pack fails because the device is out of storage. -->
+    <string name="preferences_language_change_download_failed_storage_message">Språkpakken kunne ikke lastes ned. Frigjør plass på enheten din, og prøv på nytt.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the Google Play Store or Google Play services app is missing, or Google Play didn\'t install this copy of Signal. Directs the user to download a universal build with full language support from signal.org. "Google Play" is a product name and "signal.org" is a web address; do not translate either. -->
+    <string name="preferences_language_change_download_failed_play_unavailable_message">Google Play kan ikke laste ned språkpakker for denne kopien av Signal. Du må laste ned en SPK fra signal.org for å bruke de støttede språkene.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play Store app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_disabled_message">Språkpakkene lastes ned via Google Play, som er deaktivert på denne enheten. Du må aktivere tjenesten i innstillingene for å laste ned dette språket.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play services app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_services_disabled_message">Språkpakkene lastes ned via Google Play, som er deaktivert på denne enheten. Du må aktivere tjenesten i innstillingene for å laste ned dette språket.</string>
+    <!-- Positive button label on the language pack download failure dialog when the Google Play Store or Google Play services app is turned off. Opens that app\'s page in system settings, where it can be turned on. -->
+    <string name="preferences_language_unavailable_open_settings">Åpne innstillingene</string>
+    <!-- Positive button label on the language pack download failure dialog. Starts the download again. -->
+    <string name="preferences_language_change_download_retry">Prøv på nytt</string>
+    <!-- Positive button label on the language pack download failure dialog when Google Play cannot download the pack. Opens signal.org/android/apk in a browser. -->
+    <string name="preferences_language_unavailable_visit_website">Gå til nettstedet</string>
+
     <!-- Phone number heading displayed as a screen title -->
     <string name="preferences_app_protection__phone_number">Telefonnummer</string>
     <!-- Section title above two radio buttons for enabling and disabling phone number display -->
@@ -501,6 +524,10 @@
     <string name="DataAndStorageSettingsFragment__staying_connected_while_in_the_background_will_likely_result_in_increased_battery_usage">Å være pålogget i bakgrunnen vil sannsynligvis føre til at appen bruker mer batteri. Dette er ikke nødvendig på de fleste enheter. Slå det kun på dersom du har hatt problemer med varsler før.</string>
     <!-- Button label that enables the "Stay connected in background" setting from a confirmation dialog -->
     <string name="DataAndStorageSettingsFragment__enable">Slå på</string>
+    <!-- Body of a confirmation dialog shown when a user without Google Play Services tries to disable the "Stay connected in background" setting -->
+    <string name="DataAndStorageSettingsFragment__play_services_are_not_available_on_this_device">Google Play er ikke tilgjengelig på denne enheten. Hvis dette er deaktivert, mister du muligheten til å motta meldinger når appen kjører i bakgrunnen.</string>
+    <!-- Button label that disables the "Stay connected in background" setting from a confirmation dialog -->
+    <string name="DataAndStorageSettingsFragment__continue">Fortsett</string>
   <!-- Setting option that can be selected to default media to be sent as high quality by default -->
   <string name="SentMediaQuality__high">Høy</string>
   <!-- Setting option that can be selected to default media to be sent as standard quality by default -->
@@ -662,6 +689,31 @@
     <string name="PrivacySettingsScreen__signal">Signal</string>
     <!-- Link after the incognito keyboard disclaimer that opens a support article -->
     <string name="PrivacySettingsScreen__learn_more">Finn ut mer</string>
+    <!-- Section header in privacy settings above the rows for hidden and blocked contacts -->
+    <string name="PrivacySettingsScreen__hidden_and_blocked">Skjult og blokkert</string>
+    <!-- Row label in privacy settings shown when the user has no hidden contacts or no blocked contacts -->
+    <string name="PrivacySettingsScreen__none">Ingen</string>
+    <!-- Row title in privacy settings that opens the list of contacts the user has hidden -->
+    <string name="PrivacySettingsScreen__hidden">Skjult</string>
+    <!-- Row label in privacy settings showing how many contacts the user has hidden. Placeholder is the count. -->
+    <plurals name="PrivacySettingsScreen__d_hidden_contacts">
+        <item quantity="one">%1$d kontakt</item>
+        <item quantity="other">%1$d kontakter</item>
+    </plurals>
+
+    <!-- HiddenContactsScreen -->
+    <!-- Title of the screen listing the contacts the user has hidden -->
+    <string name="HiddenContactsScreen__hidden_contacts">Skjulte kontakter</string>
+    <!-- Explanation at the top of the hidden contacts screen -->
+    <string name="HiddenContactsScreen__hidden_contacts_description">Skjulte kontakter vises ikke i søk. Du får en meldingsforespørsel hvis de forsøker å sende deg en melding. Trykk på en kontakt for å gjøre den synlig igjen.</string>
+    <!-- Shown on the hidden contacts screen when the user hasn\'t hidden anyone -->
+    <string name="HiddenContactsScreen__no_hidden_contacts">Ingen skjulte kontakter</string>
+    <!-- Dialog title asking whether to unhide a contact. Placeholder is the contact\'s name. -->
+    <string name="HiddenContactsScreen__unhide_s">Vil du gjøre %1$s synlig?</string>
+    <!-- Dialog body explaining what unhiding a contact does -->
+    <string name="HiddenContactsScreen__unhide_body">Denne personen vises i søk igjen og kan se profilen din.</string>
+    <!-- Dialog button that unhides a contact -->
+    <string name="HiddenContactsScreen__unhide">Vis</string>
 
     <!-- AppSettingsScreen -->
     <!-- String alerting user that backup storage limit has been reached -->
@@ -1176,36 +1228,36 @@
 
     <!-- AdvancedPrivacySettingsScreen -->
     <string name="preferences__advanced">Avansert</string>
-    <string name="preferences_advanced__always_relay_calls">Omdiriger alle telefonsamtaler</string>
+    <string name="preferences_advanced__always_relay_calls">Omdiriger alle anrop</string>
     <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">Omdiriger alle anrop gjennom Signal-tjenesten for å unngå å avsløre IP-adressen din til kontakten din. Aktivering vil redusere samtalekvaliteten.</string>
     <!-- Heading for the \'censorship circumvention\' section of privacy preferences -->
     <string name="preferences_communication__category_censorship_circumvention">Omgåelse av sensur</string>
     <!-- Title of the \'censorship circumvention\' toggle switch -->
-    <string name="preferences_communication__censorship_circumvention">Omgå sensur</string>
-    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">Når slått på, vil Signal forsøke å unngå sensurforsøk. Ikke skru på denne funksjonen om du ikke er i et område hvor Signal blir forsøkt sensurert.</string>
+    <string name="preferences_communication__censorship_circumvention">Omgåelse av sensur</string>
+    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">Når dette er aktivert, forsøker Signal å omgå sensur. Ikke slå på denne funksjonen med mindre du er i et område hvor Signal er sensurert.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that we automatically enabled it because we believe you\'re in a censored country -->
-    <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">Sensur-omgåelse har blitt aktivert basert på telefonnummeret som kontoen er registrert med.</string>
+    <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">Omgåelse av sensur har blitt aktivert basert på telefonnummeret som kontoen din er registrert med.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you disabled it even though we believe you\'re in a censored country -->
-    <string name="preferences_communication__censorship_circumvention_you_have_manually_disabled">Du har manuelt deaktivert censur kringgående.</string>
+    <string name="preferences_communication__censorship_circumvention_you_have_manually_disabled">Du har manuelt deaktivert omgåelse av sensur.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re already connected to the Signal service -->
-    <string name="preferences_communication__censorship_circumvention_is_not_necessary_you_are_already_connected">Omgåelse av sensur er ikke nødvendig; du er allerede koblet til Signal tjenesten.</string>
+    <string name="preferences_communication__censorship_circumvention_is_not_necessary_you_are_already_connected">Omgåelse av sensur er ikke nødvendig. Du er allerede koblet til Signal-tjenesten.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re not connected to the internet -->
-    <string name="preferences_communication__censorship_circumvention_can_only_be_activated_when_connected_to_the_internet">Sensur-omgåelse kan bare bli skrudd på når telefonen er koblet til internett.</string>
-    <string name="preferences_communication__category_sealed_sender">Forseglet Avsender</string>
-    <string name="AdvancedPrivacySettingsFragment__show_status_icon">Vis status-ikon</string>
+    <string name="preferences_communication__censorship_circumvention_can_only_be_activated_when_connected_to_the_internet">Omgåelse av sensur kan bare slås på når telefonen er koblet til internett.</string>
+    <string name="preferences_communication__category_sealed_sender">Forseglet avsender</string>
+    <string name="AdvancedPrivacySettingsFragment__show_status_icon">Vis statusikon</string>
     <string name="AdvancedPrivacySettingsFragment__show_an_icon">Vis et statusikon i meldingsdetaljer når de ble levert ved bruk av forseglet avsender.</string>
     <string name="preferences_communication__sealed_sender_allow_from_anyone">Tillat fra hvem som helst</string>
     <string name="preferences_communication__sealed_sender_allow_from_anyone_description">Aktiver forseglet avsender for innkommende meldinger fra avsendere og personer du ikke har delt profilen din med.</string>
     <!-- Preference title for automatic key verification -->
     <string name="preferences_automatic_key_verification">Automatisk kodebekreftelse</string>
     <!-- Preference summary for automatic key verification -->
-    <string name="preferences_automatic_key_verification_body">Når dette er aktivert, vil Signal forsøke å bekrefte krypteringen i personlige samtaler automatisk.</string>
+    <string name="preferences_automatic_key_verification_body">Når dette er aktivert, forsøker Signal å bekrefte krypteringen i personlige samtaler automatisk.</string>
 
     <!-- ExpireTimerSettingsScreen -->
     <!-- Title of the screen for choosing a disappearing messages timer -->
     <string name="ExpireTimerSettingsScreen__disappearing_messages">Tidsbegrensede meldinger</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">Når aktivert vil sendte og mottatte meldinger, i nye samtaler du starter, forsvinne etter at de har blitt sett.</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">Når aktivert vil meldinger sendt og mottatt i denne samtalen forsvinne etter at de har blitt sett.</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">Når dette er aktivert, forsvinner nye og mottatte meldinger i nye samtaler du starter, etter at de har blitt sett.</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">Når dette er aktivert, forsvinner nye meldinger som er sendt og mottatt i denne samtalen, etter at de har blitt sett.</string>
     <string name="ExpireTimerSettingsFragment__off">Av</string>
     <string name="ExpireTimerSettingsFragment__4_weeks">4 uker</string>
     <string name="ExpireTimerSettingsFragment__1_week">1 uke</string>
@@ -1219,29 +1271,36 @@
 
     <!-- AccountSettingsScreen -->
     <!-- Snackbar shown after the user creates a PIN -->
-    <string name="AccountSettingsScreen__pin_created">PIN laget.</string>
+    <string name="AccountSettingsScreen__pin_created">PIN-koden er laget.</string>
     <!-- Snackbar shown when wiping all of the app\'s data on this device fails -->
     <string name="AccountSettingsScreen__delete_all_data_failed">Kunne ikke slette data</string>
-    <string name="preferences_app_protection__failed_to_enable_registration_lock">Kunne ikke skru på registreringslås.</string>
-    <string name="preferences_app_protection__failed_to_disable_registration_lock">Kunne ikke skru av registreringslås.</string>
+    <string name="preferences_app_protection__failed_to_enable_registration_lock">Kunne ikke slå på registreringslås.</string>
+    <string name="preferences_app_protection__failed_to_disable_registration_lock">Kunne ikke slå av registreringslås.</string>
 
     <!-- AdvancedPinSettingsScreen -->
     <!-- Title of toolbar for the advanced pin settings screen -->
     <string name="preferences__advanced_pin_settings_title">Avanserte innstillinger for PIN-kode</string>
     <string name="preferences__enable_pin">Aktiver PIN-kode</string>
-    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN-koder holder informasjon lagret i Signal kryptert slik at bare du kan få tilgang til den. Profilen, innstillingene og kontaktene dine vil gjenopprettes når du installerer Signal på nytt. Du vil ikke trenge PIN-koden for å åpne appen.</string>
+    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN-koder holder informasjon som er lagret i Signal, kryptert, slik at bare du kan få tilgang til den. Profilen din, innstillingene dine og kontaktene dine gjenopprettes når du installerer Signal på nytt. Du trenger ikke PIN-koden for å åpne appen.</string>
     <string name="preferences__disable_pin">Deaktiver PIN-kode</string>
-    <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">Hvis du deaktiverer PIN-koden vil du miste all informasjon når du gjennomfører Signal-registrering på nytt, med mindre du manuelt tar en sikkerhetskopi og gjenoppretter innholdet. Du kan ikke skru på registreringslås mens PIN-koden er deaktivert.</string>
-    <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">PIN-koder er påkrevet for registreringslås. For å deaktivere PIN-koder, vær vennlig å deaktivere registreringslås.</string>
+    <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">Hvis du deaktiverer PIN-koden, mister du all informasjon når du registrerer Signal på nytt, med mindre du manuelt tar en sikkerhetskopi og gjenoppretter innholdet. Du kan ikke slå på registreringslåsen mens PIN-koden er deaktivert.</string>
+    <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">PIN-koder er påkrevd for registreringslås. For å deaktivere PIN-koder må du først deaktivere registreringslåsen.</string>
     <string name="ApplicationPreferencesActivity_record_payments_recovery_phrase">Angi gjenopprettingspassord for betalinger</string>
-    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">Før du kan deaktivere PIN-koden din, må du registrere betalingsgjenopprettingsfrasen for å sikre at du kan gjenopprette betalingskontoen din.</string>
+    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">Før du kan deaktivere PIN-koden din må du registrere gjenopprettingspassordet for betalinger for å sikre at du kan gjenopprette betalingskontoen din.</string>
     <string name="ApplicationPreferencesActivity_record_phrase">Angi passord</string>
     <!-- The title of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_title">Lag en ny sikkerhetskode</string>
     <!-- The body of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_body">Du må lage og registrere en ny sikkerhetskode før du kan deaktivere PIN-koden din.</string>
     <!-- The confirmation button for a dialog letting the user know they have to rotate their recovery key if they want to disable PINs. If they click the button, they will be taken to a flow to rotate their key. -->
-    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_positive_button">Lag kode</string>
-    <string name="ApplicationPreferencesActivity_pin_created">PIN laget.</string>
-    <string name="ApplicationPreferencesActivity_pin_disabled">PIN-kode deaktivert.</string>
+    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_positive_button">Opprett kode</string>
+    <string name="ApplicationPreferencesActivity_pin_created">PIN-koden er opprettet.</string>
+    <string name="ApplicationPreferencesActivity_pin_disabled">PIN-koden er deaktivert.</string>
+
+    <!-- Title of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard_changes">Vil du forkaste endringene?</string>
+    <!-- Body of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__you_will_lose_changes">Du mister endringene dine.</string>
+    <!-- Button in a dialog that throws away unsaved edits and leaves the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard">Forkast</string>
 </resources>

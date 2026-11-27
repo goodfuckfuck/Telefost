@@ -440,8 +440,31 @@
     <string name="preferences_normal">Normal</string>
     <!-- Preference summary for compact navigation bar size -->
     <string name="preferences_compact">Kompakt</string>
+
+    <!-- AppearanceSettingsScreen -->
     <!-- Dialog message body explaining that we have to restart the app in order to apply the user\'s new language setting.  -->
     <string name="preferences_language_change_confirmation_message">Uygulama yeni dil ayarını uygulamak için yeniden başlayacak.</string>
+    <!-- Dialog message body shown when selecting a language that hasn\'t been downloaded yet, notifying the user that a download will happen and then restart. -->
+    <string name="preferences_language_change_download_confirmation_message">Signal will download the language pack and then restart the app to apply the new language setting.</string>
+    <!-- Dialog message shown while a language pack is being downloaded after the user picks a language. -->
+    <string name="preferences_language_change_downloading_message">Downloading language pack…</string>
+    <!-- Dialog message shown when downloading a language pack fails for a reason that trying again may fix. %1$d is Google Play\'s numeric error code, for example -6, shown so the user can report it. -->
+    <string name="preferences_language_change_download_failed_message">Couldn\'t download language pack (error %1$d). Check your connection and try again.</string>
+    <!-- Dialog message shown when downloading a language pack fails because the device is out of storage. -->
+    <string name="preferences_language_change_download_failed_storage_message">Couldn\'t download language pack. Free up space on your device and try again.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the Google Play Store or Google Play services app is missing, or Google Play didn\'t install this copy of Signal. Directs the user to download a universal build with full language support from signal.org. "Google Play" is a product name and "signal.org" is a web address; do not translate either. -->
+    <string name="preferences_language_change_download_failed_play_unavailable_message">Google Play can\'t download language packs for this copy of Signal. Download an APK from signal.org to use all supported languages.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play Store app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_disabled_message">Language packs are downloaded through Google Play, which is turned off on this device. Enable it in settings to download this language.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play services app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_services_disabled_message">Language packs are downloaded through Google Play services, which is turned off on this device. Enable it in settings to download this language.</string>
+    <!-- Positive button label on the language pack download failure dialog when the Google Play Store or Google Play services app is turned off. Opens that app\'s page in system settings, where it can be turned on. -->
+    <string name="preferences_language_unavailable_open_settings">Ayarları aç</string>
+    <!-- Positive button label on the language pack download failure dialog. Starts the download again. -->
+    <string name="preferences_language_change_download_retry">Tekrar dene</string>
+    <!-- Positive button label on the language pack download failure dialog when Google Play cannot download the pack. Opens signal.org/android/apk in a browser. -->
+    <string name="preferences_language_unavailable_visit_website">Visit website</string>
+
     <!-- Phone number heading displayed as a screen title -->
     <string name="preferences_app_protection__phone_number">Telefon numarası</string>
     <!-- Section title above two radio buttons for enabling and disabling phone number display -->
@@ -501,6 +524,10 @@
     <string name="DataAndStorageSettingsFragment__staying_connected_while_in_the_background_will_likely_result_in_increased_battery_usage">Arka planda bağlı kalmak, pil tüketiminin artmasına neden olabilir. Çoğu cihaz için gerekli değildir. Bunu yalnızca bildirim sorunları yaşıyorsan etkinleştir.</string>
     <!-- Button label that enables the "Stay connected in background" setting from a confirmation dialog -->
     <string name="DataAndStorageSettingsFragment__enable">Etkinleştir</string>
+    <!-- Body of a confirmation dialog shown when a user without Google Play Services tries to disable the "Stay connected in background" setting -->
+    <string name="DataAndStorageSettingsFragment__play_services_are_not_available_on_this_device">Play Services are not available on this device. If this setting is disabled, you will no longer be able to receive messages while the app is in the background.</string>
+    <!-- Button label that disables the "Stay connected in background" setting from a confirmation dialog -->
+    <string name="DataAndStorageSettingsFragment__continue">Devam et</string>
   <!-- Setting option that can be selected to default media to be sent as high quality by default -->
   <string name="SentMediaQuality__high">Yüksek</string>
   <!-- Setting option that can be selected to default media to be sent as standard quality by default -->
@@ -662,6 +689,31 @@
     <string name="PrivacySettingsScreen__signal">Signal</string>
     <!-- Link after the incognito keyboard disclaimer that opens a support article -->
     <string name="PrivacySettingsScreen__learn_more">Daha fazlasını öğren</string>
+    <!-- Section header in privacy settings above the rows for hidden and blocked contacts -->
+    <string name="PrivacySettingsScreen__hidden_and_blocked">Hidden and blocked</string>
+    <!-- Row label in privacy settings shown when the user has no hidden contacts or no blocked contacts -->
+    <string name="PrivacySettingsScreen__none">Hiçbiri</string>
+    <!-- Row title in privacy settings that opens the list of contacts the user has hidden -->
+    <string name="PrivacySettingsScreen__hidden">Hidden</string>
+    <!-- Row label in privacy settings showing how many contacts the user has hidden. Placeholder is the count. -->
+    <plurals name="PrivacySettingsScreen__d_hidden_contacts">
+        <item quantity="one">%1$d kişi</item>
+        <item quantity="other">%1$d kişi</item>
+    </plurals>
+
+    <!-- HiddenContactsScreen -->
+    <!-- Title of the screen listing the contacts the user has hidden -->
+    <string name="HiddenContactsScreen__hidden_contacts">Hidden contacts</string>
+    <!-- Explanation at the top of the hidden contacts screen -->
+    <string name="HiddenContactsScreen__hidden_contacts_description">Hidden contacts don\'t show up when searching. You\'ll get a message request if they message you. Tap a contact to unhide them.</string>
+    <!-- Shown on the hidden contacts screen when the user hasn\'t hidden anyone -->
+    <string name="HiddenContactsScreen__no_hidden_contacts">No hidden contacts</string>
+    <!-- Dialog title asking whether to unhide a contact. Placeholder is the contact\'s name. -->
+    <string name="HiddenContactsScreen__unhide_s">Unhide %1$s?</string>
+    <!-- Dialog body explaining what unhiding a contact does -->
+    <string name="HiddenContactsScreen__unhide_body">This person will show up when searching again, and will be able to see your profile.</string>
+    <!-- Dialog button that unhides a contact -->
+    <string name="HiddenContactsScreen__unhide">Göster</string>
 
     <!-- AppSettingsScreen -->
     <!-- String alerting user that backup storage limit has been reached -->
@@ -1176,13 +1228,13 @@
 
     <!-- AdvancedPrivacySettingsScreen -->
     <string name="preferences__advanced">Gelişmiş</string>
-    <string name="preferences_advanced__always_relay_calls">Aramaları her zaman aktar</string>
-    <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">IP adresinizi kişinize göstermekten kaçınmak için tüm aramaları Signal sunucusundan aktarın. Etkinleştirildiğinde arama kalitesi düşecektir.</string>
+    <string name="preferences_advanced__always_relay_calls">Aramaları her zaman yönlendir</string>
+    <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">Görüştüğün kişinin IP adresini görmesini önlemek için tüm aramaları Signal sunucusu üzerinden yönlendir. Bu özelliği etkinleştirmek arama kalitesini düşürür.</string>
     <!-- Heading for the \'censorship circumvention\' section of privacy preferences -->
     <string name="preferences_communication__category_censorship_circumvention">Sansür atlatma</string>
     <!-- Title of the \'censorship circumvention\' toggle switch -->
     <string name="preferences_communication__censorship_circumvention">Sansür atlatma</string>
-    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">Etkinleştirildiğinde, Signal sansürü atlatmaya çalışacaktır. Signal\'in sansürlendiği bir konumda olmadığınız sürece bu özelliği etkinleştirmeyin.</string>
+    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">Etkinleştirildiğinde, Signal sansürü atlatmaya çalışacaktır. Signal\'ın sansürlendiği bir konumda olmadığınız sürece bu özelliği etkinleştirmeyin.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that we automatically enabled it because we believe you\'re in a censored country -->
     <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">Sansür atlatma hesabınızın telefon numarasına bağlı olarak etkinleştirildi.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you disabled it even though we believe you\'re in a censored country -->
@@ -1195,7 +1247,7 @@
     <string name="AdvancedPrivacySettingsFragment__show_status_icon">Durum simgesi göster</string>
     <string name="AdvancedPrivacySettingsFragment__show_an_icon">İletiler gizli gönderici kullanılarak gönderildiğinde ileti detaylarında simge göster.</string>
     <string name="preferences_communication__sealed_sender_allow_from_anyone">Herkesten al</string>
-    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">Kişileriniz arasında bulunmayan ve profilinizi paylaşmadığınız kişilerden göndereninin gizli olduğu iletilerin alınmasını etkinleştir.</string>
+    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">Kişilerinde kayıtlı olmayan ve profilini paylaşmadığın kişilerden de göndericisi gizli mesajlar almayı etkinleştir.</string>
     <!-- Preference title for automatic key verification -->
     <string name="preferences_automatic_key_verification">Otomatik anahtar doğrulama</string>
     <!-- Preference summary for automatic key verification -->
@@ -1204,7 +1256,7 @@
     <!-- ExpireTimerSettingsScreen -->
     <!-- Title of the screen for choosing a disappearing messages timer -->
     <string name="ExpireTimerSettingsScreen__disappearing_messages">Kaybolan mesajlar</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">Etkinleştirildiğinde, senin tarafından başlatılan yeni sohbetlerde gönderilen ve alınan yeni mesajlar görüldükten sonra kaybolur.</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">Etkinleştirildiğinde, senin başlattığın yeni sohbetlerde gönderilen ve alınan yeni mesajlar görüldükten sonra kaybolur.</string>
     <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">Etkinleştirildiğinde, bu sohbette gönderilen ve alınan yeni mesajlar görüldükten sonra kaybolur.</string>
     <string name="ExpireTimerSettingsFragment__off">Kapalı</string>
     <string name="ExpireTimerSettingsFragment__4_weeks">4 hafta</string>
@@ -1222,19 +1274,19 @@
     <string name="AccountSettingsScreen__pin_created">PIN oluşturuldu.</string>
     <!-- Snackbar shown when wiping all of the app\'s data on this device fails -->
     <string name="AccountSettingsScreen__delete_all_data_failed">Veriler silinemedi</string>
-    <string name="preferences_app_protection__failed_to_enable_registration_lock">Kayıt kilidi etkinleştirme başarısız oldu</string>
-    <string name="preferences_app_protection__failed_to_disable_registration_lock">Kayıt kilidi devredışı bırakma başarısız oldu</string>
+    <string name="preferences_app_protection__failed_to_enable_registration_lock">Kaydolma kilidi etkinleştirme başarısız oldu.</string>
+    <string name="preferences_app_protection__failed_to_disable_registration_lock">Kaydolma kilidi devre dışı bırakma başarısız oldu.</string>
 
     <!-- AdvancedPinSettingsScreen -->
     <!-- Title of toolbar for the advanced pin settings screen -->
     <string name="preferences__advanced_pin_settings_title">Gelişmiş PIN ayarları</string>
     <string name="preferences__enable_pin">PIN\'i etkinleştir</string>
-    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN\'ler Signal\'de depolanan verileri şifreli olarak tutar böylelikle yalnızca siz erişebilirsiniz. Profiliniz, ayarlarınız ve kişileriniz Signal\'i yeniden yüklediğinizde geri yüklenecektir. Uygulamayı açmak için PIN\'inize ihtiyacınız yoktur.</string>
+    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN\'ler Signal\'da depolanan verileri şifreli olarak tutar; böylece yalnızca sen erişebilirsin. Profilin, ayarların ve kişilerin Signal\'ı yeniden yüklediğinde geri yüklenecektir. Uygulamayı açmak için PIN\'e ihtiyacın yoktur.</string>
     <string name="preferences__disable_pin">PIN\'i devre dışı bırak</string>
-    <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">PIN\'i devre dışı bırakırsanız, elle yedekleyip geri yüklemediğiniz sürece Signal\'i yeniden kaydettiğinizde tüm verilerinizi kaybedersiniz. PIN devre dışı iken Kayıt Kilidini açamazsınız.</string>
-    <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">Kayıt kilidi için PIN gereklidir. PIN\'i devre dışı bırakmak için, lütfen ilk önce kayıt kilidini devre dışı bırakın.</string>
+    <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">PIN\'i devre dışı bırakırsan, elle yedekleyip geri yüklemediğin sürece Signal\'ı yeniden kaydettiğinde tüm verilerini kaybedersin. PIN devre dışı iken Kaydolma Kilidini açamazsın.</string>
+    <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">Kaydolma kilidi için PIN gereklidir. PIN\'i devre dışı bırakmak için lütfen önce kayıt kilidini devre dışı bırak.</string>
     <string name="ApplicationPreferencesActivity_record_payments_recovery_phrase">Ödemeleri kurtarma parolasını kaydet</string>
-    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">PIN\'inizi devre dışı bırakmadan önce, ödemeler hesabınızın kurtarılmasını güvence altına almak için ödemeler kurtarma parolanızı kaydetmeniz gerekiyor.</string>
+    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">PIN\'ini devre dışı bırakmadan önce, ödemeler hesabının kurtarılmasını güvence altına almak için ödemeleri kurtarma parolanı kaydetmen gerekiyor.</string>
     <string name="ApplicationPreferencesActivity_record_phrase">Parolayı kaydet</string>
     <!-- The title of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_title">Yeni bir kurtarma anahtarı oluştur</string>
@@ -1244,4 +1296,11 @@
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_positive_button">Anahtar oluştur</string>
     <string name="ApplicationPreferencesActivity_pin_created">PIN oluşturuldu.</string>
     <string name="ApplicationPreferencesActivity_pin_disabled">PIN devre dışı.</string>
+
+    <!-- Title of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard_changes">Değişiklikler silinsin mi?</string>
+    <!-- Body of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__you_will_lose_changes">You\'ll lose the changes you\'ve made.</string>
+    <!-- Button in a dialog that throws away unsaved edits and leaves the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard">Vazgeç</string>
 </resources>

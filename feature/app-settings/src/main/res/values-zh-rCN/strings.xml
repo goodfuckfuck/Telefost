@@ -439,8 +439,31 @@
     <string name="preferences_normal">正常</string>
     <!-- Preference summary for compact navigation bar size -->
     <string name="preferences_compact">紧凑</string>
+
+    <!-- AppearanceSettingsScreen -->
     <!-- Dialog message body explaining that we have to restart the app in order to apply the user\'s new language setting.  -->
     <string name="preferences_language_change_confirmation_message">应用将重启以应用新的语言设置。</string>
+    <!-- Dialog message body shown when selecting a language that hasn\'t been downloaded yet, notifying the user that a download will happen and then restart. -->
+    <string name="preferences_language_change_download_confirmation_message">Signal will download the language pack and then restart the app to apply the new language setting.</string>
+    <!-- Dialog message shown while a language pack is being downloaded after the user picks a language. -->
+    <string name="preferences_language_change_downloading_message">Downloading language pack…</string>
+    <!-- Dialog message shown when downloading a language pack fails for a reason that trying again may fix. %1$d is Google Play\'s numeric error code, for example -6, shown so the user can report it. -->
+    <string name="preferences_language_change_download_failed_message">Couldn\'t download language pack (error %1$d). Check your connection and try again.</string>
+    <!-- Dialog message shown when downloading a language pack fails because the device is out of storage. -->
+    <string name="preferences_language_change_download_failed_storage_message">Couldn\'t download language pack. Free up space on your device and try again.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the Google Play Store or Google Play services app is missing, or Google Play didn\'t install this copy of Signal. Directs the user to download a universal build with full language support from signal.org. "Google Play" is a product name and "signal.org" is a web address; do not translate either. -->
+    <string name="preferences_language_change_download_failed_play_unavailable_message">Google Play can\'t download language packs for this copy of Signal. Download an APK from signal.org to use all supported languages.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play Store app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_disabled_message">Language packs are downloaded through Google Play, which is turned off on this device. Enable it in settings to download this language.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play services app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_services_disabled_message">Language packs are downloaded through Google Play services, which is turned off on this device. Enable it in settings to download this language.</string>
+    <!-- Positive button label on the language pack download failure dialog when the Google Play Store or Google Play services app is turned off. Opens that app\'s page in system settings, where it can be turned on. -->
+    <string name="preferences_language_unavailable_open_settings">打开设置</string>
+    <!-- Positive button label on the language pack download failure dialog. Starts the download again. -->
+    <string name="preferences_language_change_download_retry">重试</string>
+    <!-- Positive button label on the language pack download failure dialog when Google Play cannot download the pack. Opens signal.org/android/apk in a browser. -->
+    <string name="preferences_language_unavailable_visit_website">Visit website</string>
+
     <!-- Phone number heading displayed as a screen title -->
     <string name="preferences_app_protection__phone_number">手机号码</string>
     <!-- Section title above two radio buttons for enabling and disabling phone number display -->
@@ -500,6 +523,10 @@
     <string name="DataAndStorageSettingsFragment__staying_connected_while_in_the_background_will_likely_result_in_increased_battery_usage">在后台保持连接可能会增加电量消耗。大多数设备无需启用此功能。请仅在遇到通知问题时才启用此功能。</string>
     <!-- Button label that enables the "Stay connected in background" setting from a confirmation dialog -->
     <string name="DataAndStorageSettingsFragment__enable">启用</string>
+    <!-- Body of a confirmation dialog shown when a user without Google Play Services tries to disable the "Stay connected in background" setting -->
+    <string name="DataAndStorageSettingsFragment__play_services_are_not_available_on_this_device">Play Services are not available on this device. If this setting is disabled, you will no longer be able to receive messages while the app is in the background.</string>
+    <!-- Button label that disables the "Stay connected in background" setting from a confirmation dialog -->
+    <string name="DataAndStorageSettingsFragment__continue">继续</string>
   <!-- Setting option that can be selected to default media to be sent as high quality by default -->
   <string name="SentMediaQuality__high">高</string>
   <!-- Setting option that can be selected to default media to be sent as standard quality by default -->
@@ -660,6 +687,30 @@
     <string name="PrivacySettingsScreen__signal">Signal</string>
     <!-- Link after the incognito keyboard disclaimer that opens a support article -->
     <string name="PrivacySettingsScreen__learn_more">了解详情</string>
+    <!-- Section header in privacy settings above the rows for hidden and blocked contacts -->
+    <string name="PrivacySettingsScreen__hidden_and_blocked">Hidden and blocked</string>
+    <!-- Row label in privacy settings shown when the user has no hidden contacts or no blocked contacts -->
+    <string name="PrivacySettingsScreen__none">无</string>
+    <!-- Row title in privacy settings that opens the list of contacts the user has hidden -->
+    <string name="PrivacySettingsScreen__hidden">Hidden</string>
+    <!-- Row label in privacy settings showing how many contacts the user has hidden. Placeholder is the count. -->
+    <plurals name="PrivacySettingsScreen__d_hidden_contacts">
+        <item quantity="other">%1$d 个联系人</item>
+    </plurals>
+
+    <!-- HiddenContactsScreen -->
+    <!-- Title of the screen listing the contacts the user has hidden -->
+    <string name="HiddenContactsScreen__hidden_contacts">Hidden contacts</string>
+    <!-- Explanation at the top of the hidden contacts screen -->
+    <string name="HiddenContactsScreen__hidden_contacts_description">Hidden contacts don\'t show up when searching. You\'ll get a message request if they message you. Tap a contact to unhide them.</string>
+    <!-- Shown on the hidden contacts screen when the user hasn\'t hidden anyone -->
+    <string name="HiddenContactsScreen__no_hidden_contacts">No hidden contacts</string>
+    <!-- Dialog title asking whether to unhide a contact. Placeholder is the contact\'s name. -->
+    <string name="HiddenContactsScreen__unhide_s">Unhide %1$s?</string>
+    <!-- Dialog body explaining what unhiding a contact does -->
+    <string name="HiddenContactsScreen__unhide_body">This person will show up when searching again, and will be able to see your profile.</string>
+    <!-- Dialog button that unhides a contact -->
+    <string name="HiddenContactsScreen__unhide">取消隐藏</string>
 
     <!-- AppSettingsScreen -->
     <!-- String alerting user that backup storage limit has been reached -->
@@ -1172,72 +1223,79 @@
 
     <!-- AdvancedPrivacySettingsScreen -->
     <string name="preferences__advanced">高级</string>
-    <string name="preferences_advanced__always_relay_calls">总是转发通话</string>
-    <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">通过 Signal 服务器中转全部通话，避免向联系人显示 IP 地址。启用该选项会降低通话质量。</string>
+    <string name="preferences_advanced__always_relay_calls">总是中继通话</string>
+    <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">通过 Signal 服务器中继全部通话，避免向联系人显示您的 IP 地址。启用该选项会降低通话质量。</string>
     <!-- Heading for the \'censorship circumvention\' section of privacy preferences -->
     <string name="preferences_communication__category_censorship_circumvention">审查规避</string>
     <!-- Title of the \'censorship circumvention\' toggle switch -->
     <string name="preferences_communication__censorship_circumvention">审查规避</string>
     <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">若启用，Signal 会尝试规避审查。除非 Signal 在您所在地受到审查，否则不要打开该功能。</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that we automatically enabled it because we believe you\'re in a censored country -->
-    <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">已根据您的手机号码启动审查规避。</string>
+    <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">已根据您账户的电话号码启用审查规避。</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you disabled it even though we believe you\'re in a censored country -->
     <string name="preferences_communication__censorship_circumvention_you_have_manually_disabled">您已手动禁用了审查规避功能</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re already connected to the Signal service -->
     <string name="preferences_communication__censorship_circumvention_is_not_necessary_you_are_already_connected">不需要规避审查；您已连接上了 Signal 服务。</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re not connected to the internet -->
     <string name="preferences_communication__censorship_circumvention_can_only_be_activated_when_connected_to_the_internet">审查规避只能在联网时启动。</string>
-    <string name="preferences_communication__category_sealed_sender">密封发送人</string>
+    <string name="preferences_communication__category_sealed_sender">加密发送人</string>
     <string name="AdvancedPrivacySettingsFragment__show_status_icon">显示状态图标</string>
-    <string name="AdvancedPrivacySettingsFragment__show_an_icon">当使用密封发送人送达消息时，在详情中显示图标。</string>
+    <string name="AdvancedPrivacySettingsFragment__show_an_icon">当消息通过加密发送人送达时，在消息详情中显示图标。</string>
     <string name="preferences_communication__sealed_sender_allow_from_anyone">允许来自任何人</string>
-    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">对于非联系人和未与其分享个人资料的其他人，启用传入消息的密封发送人功能。</string>
+    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">对来自非联系人以及您尚未向其分享个人资料的用户的消息，启用加密发送人。</string>
     <!-- Preference title for automatic key verification -->
     <string name="preferences_automatic_key_verification">自动密钥验证</string>
     <!-- Preference summary for automatic key verification -->
-    <string name="preferences_automatic_key_verification_body">如果启用此功能，Signal 会尝试自动验证一对一聊天加密。</string>
+    <string name="preferences_automatic_key_verification_body">启用后，Signal 会尝试自动验证一对一聊天加密。</string>
 
     <!-- ExpireTimerSettingsScreen -->
     <!-- Title of the screen for choosing a disappearing messages timer -->
     <string name="ExpireTimerSettingsScreen__disappearing_messages">限时消息</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">如果启用，由您开启的新聊天，收发的新消息将在查看之后消失。</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">如果启用，该聊天中收发的新消息将在查看之后消失。</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">启用后，在由您发起的新聊天中收发的新消息将在查看后消失。</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">启用后，在此聊天中收发的新消息将在查看后消失。</string>
     <string name="ExpireTimerSettingsFragment__off">关</string>
     <string name="ExpireTimerSettingsFragment__4_weeks">4 周</string>
     <string name="ExpireTimerSettingsFragment__1_week">1 周</string>
     <string name="ExpireTimerSettingsFragment__1_day">1 天</string>
     <string name="ExpireTimerSettingsFragment__8_hours">8 小时</string>
     <string name="ExpireTimerSettingsFragment__1_hour">1 小时</string>
-    <string name="ExpireTimerSettingsFragment__5_minutes">5分钟</string>
-    <string name="ExpireTimerSettingsFragment__30_seconds">30秒</string>
+    <string name="ExpireTimerSettingsFragment__5_minutes">5 分钟</string>
+    <string name="ExpireTimerSettingsFragment__30_seconds">30 秒</string>
     <string name="ExpireTimerSettingsFragment__custom_time">自定义时间</string>
     <string name="ExpireTimerSettingsFragment__save">保存</string>
 
     <!-- AccountSettingsScreen -->
     <!-- Snackbar shown after the user creates a PIN -->
-    <string name="AccountSettingsScreen__pin_created">PIN 已创建。</string>
+    <string name="AccountSettingsScreen__pin_created">PIN 码已创建。</string>
     <!-- Snackbar shown when wiping all of the app\'s data on this device fails -->
     <string name="AccountSettingsScreen__delete_all_data_failed">无法删除数据</string>
-    <string name="preferences_app_protection__failed_to_enable_registration_lock">无法启用注册锁。</string>
-    <string name="preferences_app_protection__failed_to_disable_registration_lock">无法禁用注册锁。</string>
+    <string name="preferences_app_protection__failed_to_enable_registration_lock">无法启用注册锁定。</string>
+    <string name="preferences_app_protection__failed_to_disable_registration_lock">无法禁用注册锁定。</string>
 
     <!-- AdvancedPinSettingsScreen -->
     <!-- Title of toolbar for the advanced pin settings screen -->
     <string name="preferences__advanced_pin_settings_title">高级 PIN 设置</string>
     <string name="preferences__enable_pin">启用 PIN 码</string>
-    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN 用于加密 Signal 存储的信息，这样只有你可以访问。重装之后，可还原你的个人资料、设置和联系人。打开 Signal 无需使用 PIN。</string>
+    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN 码可对存储在 Signal 中的信息进行加密，确保只有您可以访问。当您重新安装时，您的个人资料、设置和联系人将会恢复。打开应用时无需输入 PIN 码。</string>
     <string name="preferences__disable_pin">禁用 PIN 码</string>
     <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">如果禁用 PIN 码，重新注册 Signal 时全部数据将丢失，除非使用手动备份并还原。PIN 码禁用时，无法启用注册锁定。</string>
-    <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">PIN 对于注册锁定是必需的。如需禁用 PIN，请先禁用注册锁定。</string>
+    <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">PIN 码对于注册锁定是必需的。如需禁用 PIN 码，请先禁用注册锁定。</string>
     <string name="ApplicationPreferencesActivity_record_payments_recovery_phrase">记下付款恢复短语</string>
     <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">在禁用 PIN 码之前，务必记下付款恢复短语，确保可恢复您的付款帐户。</string>
     <string name="ApplicationPreferencesActivity_record_phrase">记下短语</string>
     <!-- The title of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_title">创建新的恢复密钥</string>
     <!-- The body of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
-    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_body">在禁用密码之前，您必须创建和记录一个新的恢复密钥。</string>
+    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_body">在禁用 PIN 码之前，您必须创建和记录一个新的恢复密钥。</string>
     <!-- The confirmation button for a dialog letting the user know they have to rotate their recovery key if they want to disable PINs. If they click the button, they will be taken to a flow to rotate their key. -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_positive_button">创建密钥</string>
-    <string name="ApplicationPreferencesActivity_pin_created">PIN 已创建。</string>
-    <string name="ApplicationPreferencesActivity_pin_disabled">已禁用 PIN。</string>
+    <string name="ApplicationPreferencesActivity_pin_created">PIN 码已创建。</string>
+    <string name="ApplicationPreferencesActivity_pin_disabled">已禁用 PIN 码。</string>
+
+    <!-- Title of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard_changes">要放弃更改吗？</string>
+    <!-- Body of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__you_will_lose_changes">You\'ll lose the changes you\'ve made.</string>
+    <!-- Button in a dialog that throws away unsaved edits and leaves the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard">放弃</string>
 </resources>

@@ -516,7 +516,7 @@
     <string name="ConversationFragment_delete_for_me">Eliminar para mí</string>
     <string name="ConversationFragment_delete_for_everyone">Eliminar para todos</string>
     <!-- Snackbar text shown after the user deletes one or more messages only for themselves -->
-    <string name="ConversationFragment__deleted_for_me">Deleted for me</string>
+    <string name="ConversationFragment__deleted_for_me">Eliminado para mí</string>
     <!-- Title of dialog confirming whether to delete the message -->
     <plurals name="ConversationFragment_delete_selected_title">
         <item quantity="one">¿Eliminar el mensaje seleccionado?</item>
@@ -1219,6 +1219,14 @@
         <item quantity="one">No se puede añadir participante.</item>
         <item quantity="other">No se puede añadir participantes.</item>
     </plurals>
+
+    <!-- LanguagePackReadyBanner -->
+    <!-- Banner shown after a language finished downloading in the background. %1$s is the language\'s name written in that language, for example "Deutsch". -->
+    <string name="LanguagePackReadyBanner__body">"The app language %1$s is ready to use. Restart Signal to switch to it."</string>
+    <!-- Button on the banner shown after a language finished downloading. Restarts the app so the language takes effect. -->
+    <string name="LanguagePackReadyBanner__restart">Reiniciar</string>
+    <!-- Button on the banner shown after a language finished downloading. Hides the banner without restarting and applying the new language. -->
+    <string name="LanguagePackReadyBanner__not_now">Ahora no</string>
 
     <!-- LeaveGroupDialog -->
     <string name="LeaveGroupDialog_leave_group">¿Abandonar grupo?</string>
@@ -2087,7 +2095,7 @@
         <item quantity="one">Te queda %1$d intento. Si agotas los intentos, podrás crear un nuevo PIN. Podrás registrar y usar tu cuenta, pero se perderán algunos ajustes ya guardados, como tu información de perfil.</item>
         <item quantity="other">Te quedan %1$d intentos. Si agotas los intentos, podrás crear un nuevo PIN. Podrás registrar y usar tu cuenta, pero se perderán algunos ajustes ya guardados, como tu información de perfil.</item>
     </plurals>
-    <string name="PinRestoreEntryFragment_signal_registration_need_help_with_pin">Registrarte en Signal: Ayuda con el PIN en Android</string>
+    <string name="PinRestoreEntryFragment_signal_registration_need_help_with_pin">Registro en Signal: Ayuda con el PIN en Android</string>
 
     <!-- PinRestoreLockedFragment -->
     <string name="PinRestoreLockedFragment_create_your_pin">Crea tu PIN</string>
@@ -4226,6 +4234,12 @@
     <string name="CallNotificationBuilder__ongoing_signal_group_call">Llamada grupal de Signal en curso</string>
 
     <string name="CallNotificationBuilder_connecting">Conectando…</string>
+    <!-- Notification title shown when Signal needs to be opened to use the microphone during a call -->
+    <string name="CallNotificationBuilder__open_signal">Abrir Signal</string>
+    <!-- Notification body shown when a call was answered from a watch or other device but Signal needs microphone permission before it can connect -->
+    <string name="CallNotificationBuilder__to_answer_this_call_allow_signal_access_to_your_microphone">To answer this call, allow Signal access to your microphone.</string>
+    <!-- Notification body shown during a call when Android blocked microphone access because Signal was in the background -->
+    <string name="CallNotificationBuilder__the_other_person_cant_hear_you_until_you_open_signal">The other person can\'t hear you until you open Signal.</string>
     <string name="enter_backup_passphrase_dialog__backup_passphrase">Contraseña de la copia de seguridad</string>
     <string name="backup_enable_dialog__backups_will_be_saved_to_external_storage_and_encrypted_with_the_passphrase_below_you_must_have_this_passphrase_in_order_to_restore_a_backup">Las copias de seguridad se guardarán en una unidad de almacenamiento externo y se cifrarán con la frase de contraseña que aparece más abajo. Necesitas esta contraseña para poder restaurar la copia de seguridad.</string>
     <string name="backup_enable_dialog__you_must_have_this_passphrase">Necesitas esta contraseña para poder restaurar la copia de seguridad.</string>
@@ -4266,7 +4280,7 @@
     <string name="RegistrationActivity_call_me_instead_available_in">Llamarme (%1$02d:%2$02d)</string>
     <!--    Countdown to when the user can request a new SMS code during registration.-->
     <string name="RegistrationActivity_resend_sms_available_in">Reenviar clave (%1$02d:%2$02d)</string>
-    <string name="RegistrationActivity_code_support_subject">Registrarte en Signal: Clave de verificación en Android</string>
+    <string name="RegistrationActivity_code_support_subject">Registro en Signal: Clave de verificación en Android</string>
     <string name="RegistrationActivity_incorrect_code">Clave incorrecta</string>
     <string name="BackupUtil_never">Nunca</string>
     <!-- Subtext below last backup time when we do not know when the last backup was -->
@@ -5133,6 +5147,8 @@
     <string name="NewConversationActivity__video_call">Videollamada</string>
     <!-- Context menu item remove -->
     <string name="NewConversationActivity__remove">Eliminar</string>
+    <!-- Context menu item that hides a contact -->
+    <string name="NewConversationActivity__hide">Ocultar</string>
     <!-- Context menu item block -->
     <string name="NewConversationActivity__block">Bloquear</string>
     <!-- Dialog title when removing a contact -->
@@ -5141,6 +5157,12 @@
     <string name="NewConversationActivity__you_wont_see_this_person">No verás a esta persona en tus búsquedas. Recibirás una solicitud de mensaje si te escribe en algún momento.</string>
     <!-- Snackbar message after removing a contact -->
     <string name="NewConversationActivity__s_has_been_removed">Se ha eliminado a %1$s</string>
+    <!-- Dialog title when hiding a contact. Placeholder is the contact\'s name. -->
+    <string name="NewConversationActivity__hide_s">Hide %1$s?</string>
+    <!-- Dialog body when hiding a contact -->
+    <string name="NewConversationActivity__this_person_wont_appear">This person won\'t appear in your contact list and search. If they message you in the future, you\'ll receive a message request. You can manage people you\'ve hidden in settings.</string>
+    <!-- Snackbar message after hiding a contact. Placeholder is the contact\'s name. -->
+    <string name="NewConversationActivity__s_has_been_hidden">%1$s has been hidden</string>
     <!-- Snackbar message after blocking a contact -->
     <string name="NewConversationActivity__s_has_been_blocked">Se ha bloqueado a %1$s</string>
     <!-- Error message shown when looking up a person by phone number and that phone number is not associated with a signal account -->

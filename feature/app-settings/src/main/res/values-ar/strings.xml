@@ -444,8 +444,31 @@
     <string name="preferences_normal">عادي</string>
     <!-- Preference summary for compact navigation bar size -->
     <string name="preferences_compact">مُصغَّر</string>
+
+    <!-- AppearanceSettingsScreen -->
     <!-- Dialog message body explaining that we have to restart the app in order to apply the user\'s new language setting.  -->
     <string name="preferences_language_change_confirmation_message">سيُعاد تشغيل التطبيق لاعتماد إعداد اللغة الجديدة.</string>
+    <!-- Dialog message body shown when selecting a language that hasn\'t been downloaded yet, notifying the user that a download will happen and then restart. -->
+    <string name="preferences_language_change_download_confirmation_message">Signal will download the language pack and then restart the app to apply the new language setting.</string>
+    <!-- Dialog message shown while a language pack is being downloaded after the user picks a language. -->
+    <string name="preferences_language_change_downloading_message">Downloading language pack…</string>
+    <!-- Dialog message shown when downloading a language pack fails for a reason that trying again may fix. %1$d is Google Play\'s numeric error code, for example -6, shown so the user can report it. -->
+    <string name="preferences_language_change_download_failed_message">Couldn\'t download language pack (error %1$d). Check your connection and try again.</string>
+    <!-- Dialog message shown when downloading a language pack fails because the device is out of storage. -->
+    <string name="preferences_language_change_download_failed_storage_message">Couldn\'t download language pack. Free up space on your device and try again.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the Google Play Store or Google Play services app is missing, or Google Play didn\'t install this copy of Signal. Directs the user to download a universal build with full language support from signal.org. "Google Play" is a product name and "signal.org" is a web address; do not translate either. -->
+    <string name="preferences_language_change_download_failed_play_unavailable_message">Google Play can\'t download language packs for this copy of Signal. Download an APK from signal.org to use all supported languages.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play Store app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_disabled_message">Language packs are downloaded through Google Play, which is turned off on this device. Enable it in settings to download this language.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play services app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_services_disabled_message">Language packs are downloaded through Google Play services, which is turned off on this device. Enable it in settings to download this language.</string>
+    <!-- Positive button label on the language pack download failure dialog when the Google Play Store or Google Play services app is turned off. Opens that app\'s page in system settings, where it can be turned on. -->
+    <string name="preferences_language_unavailable_open_settings">فتح \"الإعدادات\"</string>
+    <!-- Positive button label on the language pack download failure dialog. Starts the download again. -->
+    <string name="preferences_language_change_download_retry">حاوِل مُجدَّدًا</string>
+    <!-- Positive button label on the language pack download failure dialog when Google Play cannot download the pack. Opens signal.org/android/apk in a browser. -->
+    <string name="preferences_language_unavailable_visit_website">Visit website</string>
+
     <!-- Phone number heading displayed as a screen title -->
     <string name="preferences_app_protection__phone_number">رقم الهاتف</string>
     <!-- Section title above two radio buttons for enabling and disabling phone number display -->
@@ -505,6 +528,10 @@
     <string name="DataAndStorageSettingsFragment__staying_connected_while_in_the_background_will_likely_result_in_increased_battery_usage">البقاء على اتصال في الخلفية قد يستهلك المزيد من طاقة البطارية. وهو أمر غير ضروري لمعظم الأجهزة. لا تقُم بتفعيل هذا الخيار إلّا إذا كُنتَ تواجه مشاكل في تلقي الإشعارات.</string>
     <!-- Button label that enables the "Stay connected in background" setting from a confirmation dialog -->
     <string name="DataAndStorageSettingsFragment__enable">تفعيل</string>
+    <!-- Body of a confirmation dialog shown when a user without Google Play Services tries to disable the "Stay connected in background" setting -->
+    <string name="DataAndStorageSettingsFragment__play_services_are_not_available_on_this_device">Play Services are not available on this device. If this setting is disabled, you will no longer be able to receive messages while the app is in the background.</string>
+    <!-- Button label that disables the "Stay connected in background" setting from a confirmation dialog -->
+    <string name="DataAndStorageSettingsFragment__continue">متابعة</string>
   <!-- Setting option that can be selected to default media to be sent as high quality by default -->
   <string name="SentMediaQuality__high">عالية الدقة</string>
   <!-- Setting option that can be selected to default media to be sent as standard quality by default -->
@@ -670,6 +697,35 @@
     <string name="PrivacySettingsScreen__signal">سيجنال</string>
     <!-- Link after the incognito keyboard disclaimer that opens a support article -->
     <string name="PrivacySettingsScreen__learn_more">اعرف المزيد</string>
+    <!-- Section header in privacy settings above the rows for hidden and blocked contacts -->
+    <string name="PrivacySettingsScreen__hidden_and_blocked">Hidden and blocked</string>
+    <!-- Row label in privacy settings shown when the user has no hidden contacts or no blocked contacts -->
+    <string name="PrivacySettingsScreen__none">لا شيء</string>
+    <!-- Row title in privacy settings that opens the list of contacts the user has hidden -->
+    <string name="PrivacySettingsScreen__hidden">Hidden</string>
+    <!-- Row label in privacy settings showing how many contacts the user has hidden. Placeholder is the count. -->
+    <plurals name="PrivacySettingsScreen__d_hidden_contacts">
+        <item quantity="zero">%1$d جهات اتصال</item>
+        <item quantity="one">%1$d جهة اتصال</item>
+        <item quantity="two">%1$d جهتيْ اتصال</item>
+        <item quantity="few">%1$d جهات اتصال</item>
+        <item quantity="many">%1$d جهة اتصال</item>
+        <item quantity="other">%1$d جهة اتصال</item>
+    </plurals>
+
+    <!-- HiddenContactsScreen -->
+    <!-- Title of the screen listing the contacts the user has hidden -->
+    <string name="HiddenContactsScreen__hidden_contacts">Hidden contacts</string>
+    <!-- Explanation at the top of the hidden contacts screen -->
+    <string name="HiddenContactsScreen__hidden_contacts_description">Hidden contacts don\'t show up when searching. You\'ll get a message request if they message you. Tap a contact to unhide them.</string>
+    <!-- Shown on the hidden contacts screen when the user hasn\'t hidden anyone -->
+    <string name="HiddenContactsScreen__no_hidden_contacts">No hidden contacts</string>
+    <!-- Dialog title asking whether to unhide a contact. Placeholder is the contact\'s name. -->
+    <string name="HiddenContactsScreen__unhide_s">Unhide %1$s?</string>
+    <!-- Dialog body explaining what unhiding a contact does -->
+    <string name="HiddenContactsScreen__unhide_body">This person will show up when searching again, and will be able to see your profile.</string>
+    <!-- Dialog button that unhides a contact -->
+    <string name="HiddenContactsScreen__unhide">إظهار</string>
 
     <!-- AppSettingsScreen -->
     <!-- String alerting user that backup storage limit has been reached -->
@@ -1198,7 +1254,7 @@
     <string name="preferences_communication__category_censorship_circumvention">تجاوز الرقابة</string>
     <!-- Title of the \'censorship circumvention\' toggle switch -->
     <string name="preferences_communication__censorship_circumvention">تجاوز الرقابة</string>
-    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">في حالة التفعيل، سيُحاول تطبيق سيجنال تجاوز الرقابة. لا تُفعِّل هذه الميزة إلا إذا كنتَ في مكان يخضع فيه سيجنال للرقابة.</string>
+    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">في حالة التفعيل، سيُحاول تطبيق سيجنال تجاوز الرقابة. لا تُفعِّل هذه الميزة إلا إذا كُنتَ في مكان يخضع فيه سيجنال للرقابة.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that we automatically enabled it because we believe you\'re in a censored country -->
     <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">تمَّ تنشيط خاصية \"تجاوز الرقابة\" استنادًا إلى رقم الهاتف الخاص بحسابك.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you disabled it even though we believe you\'re in a censored country -->
@@ -1211,7 +1267,7 @@
     <string name="AdvancedPrivacySettingsFragment__show_status_icon">إظهار أيقونة الحالة</string>
     <string name="AdvancedPrivacySettingsFragment__show_an_icon">عرض أيقونة في تفاصيل الرسالة للرسائل التي تمَّ إيصالها باستخدام المُرسِل المُشفَّر.</string>
     <string name="preferences_communication__sealed_sender_allow_from_anyone">السماح من أي شخص</string>
-    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">تفعيل خاصية \"المُرسِل المُشفَّر\" للرسائل الواردة من غير جهات الاتصال والأشخاص الذين لم تشارِك معه ملفّك الشخصي.</string>
+    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">تفعيل خاصية \"المُرسِل المُشفَّر\" للرسائل الواردة من غير جهات الاتصال والأشخاص الذين لم تشارِك معهم ملفّك الشخصي.</string>
     <!-- Preference title for automatic key verification -->
     <string name="preferences_automatic_key_verification">التحقُّق التلقائي من المفاتيح</string>
     <!-- Preference summary for automatic key verification -->
@@ -1219,14 +1275,14 @@
 
     <!-- ExpireTimerSettingsScreen -->
     <!-- Title of the screen for choosing a disappearing messages timer -->
-    <string name="ExpireTimerSettingsScreen__disappearing_messages">ميزة اختفاء الرسائل</string>
+    <string name="ExpireTimerSettingsScreen__disappearing_messages">ميزة الرسائل المؤقَّتة</string>
     <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">عند تفعيلها، سَتختفي الرسائل الجديدة، المُرسلَة والمُستلَمة في الدردشات الجديدة التي بدأتَ بها، بعد رؤيتها.</string>
     <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">عند تفعيلها، ستختفي الرسائل الجديدة، المُرسلَة والمُستلَمة في هذه الدردشة، بعد رؤيتها.</string>
     <string name="ExpireTimerSettingsFragment__off">في حالة إيقاف</string>
     <string name="ExpireTimerSettingsFragment__4_weeks">4 أسابيع</string>
     <string name="ExpireTimerSettingsFragment__1_week">أسبوع واحد</string>
     <string name="ExpireTimerSettingsFragment__1_day">يوم واحد</string>
-    <string name="ExpireTimerSettingsFragment__8_hours">ثمانِ ساعات</string>
+    <string name="ExpireTimerSettingsFragment__8_hours">ثماني ساعات</string>
     <string name="ExpireTimerSettingsFragment__1_hour">ساعة واحدة</string>
     <string name="ExpireTimerSettingsFragment__5_minutes">5 دقائق</string>
     <string name="ExpireTimerSettingsFragment__30_seconds">30 ثانية</string>
@@ -1245,7 +1301,7 @@
     <!-- Title of toolbar for the advanced pin settings screen -->
     <string name="preferences__advanced_pin_settings_title">الإعدادات المُتقدِّمة لرقم الـ PIN</string>
     <string name="preferences__enable_pin">تفعيل رقم PIN</string>
-    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">أرقام التعريف الشخصية (PIN) تُبقي المعلومات المحفوظة في سيجنال مُشفَّرة لكي لا يستطيع أحدٌ غيرك الوصول إليها. سيتمُّ استرجاع حسابك الشخصي، إعداداتك، وجهات اتصالك عند إعادة تثبيت التطبيق. لن تكون لك حاجة بعدها لرقم التعريف الشخصي لفتح التطبيق.</string>
+    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">أرقام التعريف الشخصية (PIN) تُبقي المعلومات المحفوظة في سيجنال مُشفَّرة لكي لا يستطيع أحدٌ غيرك الوصول إليها. سيتمُّ استرجاع حسابك الشخصي، وإعداداتك، وجهات اتصالك عند إعادة تثبيت التطبيق. لن تكون لك حاجة بعدها لرقم التعريف الشخصي لفتح التطبيق.</string>
     <string name="preferences__disable_pin">تعطيل رقم الـ PIN</string>
     <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">إذا قٌمتَ بتعطيل رقم التعريف الشخصي (PIN)، ستضيع جميع البيانات عند قيامك بإعادة التسجيل في سيجنال إلّا إذا قُمتَ باسترجاعها بواسطة النسخ الاحتياطي اليدوي. لا يمكنك تفعيل قفل التسجيل بينما رقم التعريف الشخصي (PIN) في حالة تعطيل.</string>
     <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">رقم التعريف الشخصي (PIN) مطلوب لقفل التسجيل. لتعطيله، يُرجى أولًا تعطيل قفل التسجيل.</string>
@@ -1255,9 +1311,16 @@
     <!-- The title of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_title">إنشاء مفتاح استعادة جديد</string>
     <!-- The body of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
-    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_body">عليك إنشاء وتسجيل مفتاح استعادة جديد قبل أن تتمكّن من إيقاف تشغيل رقم التعريف الشخصي الخاص بك.</string>
+    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_body">عليك إنشاء وتسجيل مفتاح استعادة جديد قبل أن تتمكّن من تعطيل رقم التعريف الشخصي (PIN) الخاص بك.</string>
     <!-- The confirmation button for a dialog letting the user know they have to rotate their recovery key if they want to disable PINs. If they click the button, they will be taken to a flow to rotate their key. -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_positive_button">إنشاء مفتاح</string>
     <string name="ApplicationPreferencesActivity_pin_created">تمَّ إنشاء رقم التعريف الشخصي (PIN).</string>
     <string name="ApplicationPreferencesActivity_pin_disabled">تمَّ تعطيل رقم التعريف الشخصي (PIN).</string>
+
+    <!-- Title of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard_changes">هل ترغبُ بتجاهل التغييرات؟</string>
+    <!-- Body of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__you_will_lose_changes">You\'ll lose the changes you\'ve made.</string>
+    <!-- Button in a dialog that throws away unsaved edits and leaves the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard">تجاهل</string>
 </resources>

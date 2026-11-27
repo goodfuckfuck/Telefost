@@ -440,8 +440,31 @@
     <string name="preferences_normal">സാധാരണം</string>
     <!-- Preference summary for compact navigation bar size -->
     <string name="preferences_compact">കോമ്പാക്റ്റ്</string>
+
+    <!-- AppearanceSettingsScreen -->
     <!-- Dialog message body explaining that we have to restart the app in order to apply the user\'s new language setting.  -->
     <string name="preferences_language_change_confirmation_message">പുതിയ ഭാഷാ ക്രമീകരണം ബാധകമാക്കാൻ ആപ്പ് പുനരാരംഭിക്കപ്പെടും.</string>
+    <!-- Dialog message body shown when selecting a language that hasn\'t been downloaded yet, notifying the user that a download will happen and then restart. -->
+    <string name="preferences_language_change_download_confirmation_message">Signal ഭാഷാ പായ്ക്ക് ഡൗൺലോഡ് ചെയ്യുകയും തുടർന്ന് പുതിയ ഭാഷാ ക്രമീകരണം പ്രയോഗിക്കുന്നതിനായി ആപ്പ് റീസ്റ്റാർട്ട് ചെയ്യുകയും ചെയ്യും.</string>
+    <!-- Dialog message shown while a language pack is being downloaded after the user picks a language. -->
+    <string name="preferences_language_change_downloading_message">ഭാഷാ പായ്ക്ക് ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
+    <!-- Dialog message shown when downloading a language pack fails for a reason that trying again may fix. %1$d is Google Play\'s numeric error code, for example -6, shown so the user can report it. -->
+    <string name="preferences_language_change_download_failed_message">ഭാഷാ പായ്ക്ക് ഡൗൺലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല (പിശക് %1$d). നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച ശേഷം വീണ്ടും ശ്രമിക്കുക.</string>
+    <!-- Dialog message shown when downloading a language pack fails because the device is out of storage. -->
+    <string name="preferences_language_change_download_failed_storage_message">ഭാഷാ പായ്ക്ക് ഡൗൺലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ ഉപകരണത്തിൽ സ്‌പെയ്‌സ് സൃഷ്ടിച്ച് വീണ്ടും ശ്രമിക്കുക.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the Google Play Store or Google Play services app is missing, or Google Play didn\'t install this copy of Signal. Directs the user to download a universal build with full language support from signal.org. "Google Play" is a product name and "signal.org" is a web address; do not translate either. -->
+    <string name="preferences_language_change_download_failed_play_unavailable_message">Signal-ന്റെ ഈ പകർപ്പിനായി Google Play-ക്ക് ഭാഷാ പായ്ക്കുകൾ ഡൗൺലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. പിന്തുണയ്ക്കുന്ന എല്ലാ ഭാഷകളും ഉപയോഗിക്കുന്നതിന് signal.org-ൽ നിന്ന് ഒരു APK ഡൗൺലോഡ് ചെയ്യുക.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play Store app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_disabled_message">ഈ ഉപകരണത്തിൽ ഓഫാക്കിയിരിക്കുന്ന Google Play വഴിയാണ് ഭാഷാ പായ്ക്കുകൾ ഡൗൺലോഡ് ചെയ്യുന്നത്. ഈ ഭാഷ ഡൗൺലോഡ് ചെയ്യാൻ ക്രമീകരണങ്ങളിൽ ഇത് പ്രവർത്തനക്ഷമമാക്കുക.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play services app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_services_disabled_message">ഈ ഉപകരണത്തിൽ ഓഫാക്കിയിരിക്കുന്ന Google Play സേവനങ്ങൾ വഴിയാണ് ഭാഷാ പായ്ക്കുകൾ ഡൗൺലോഡ് ചെയ്യുന്നത്. ഈ ഭാഷ ഡൗൺലോഡ് ചെയ്യാൻ ക്രമീകരണങ്ങളിൽ ഇത് പ്രവർത്തനക്ഷമമാക്കുക.</string>
+    <!-- Positive button label on the language pack download failure dialog when the Google Play Store or Google Play services app is turned off. Opens that app\'s page in system settings, where it can be turned on. -->
+    <string name="preferences_language_unavailable_open_settings">ക്രമീകരണങ്ങൾ തുറക്കുക</string>
+    <!-- Positive button label on the language pack download failure dialog. Starts the download again. -->
+    <string name="preferences_language_change_download_retry">വീണ്ടും ശ്രമിക്കുക</string>
+    <!-- Positive button label on the language pack download failure dialog when Google Play cannot download the pack. Opens signal.org/android/apk in a browser. -->
+    <string name="preferences_language_unavailable_visit_website">വെബ്സൈറ്റ് സന്ദർശിക്കുക</string>
+
     <!-- Phone number heading displayed as a screen title -->
     <string name="preferences_app_protection__phone_number">ഫോൺ നമ്പർ</string>
     <!-- Section title above two radio buttons for enabling and disabling phone number display -->
@@ -501,6 +524,10 @@
     <string name="DataAndStorageSettingsFragment__staying_connected_while_in_the_background_will_likely_result_in_increased_battery_usage">പശ്ചാത്തലത്തിൽ കണക്റ്റ് ചെയ്ത് തുടരുന്നത് ബാറ്ററി ഉപയോഗം വർദ്ധിപ്പിക്കാൻ ഇടയാക്കിയേക്കാം. മിക്ക ഉപകരണങ്ങൾക്കും ഇത് ആവശ്യമില്ല. നിങ്ങൾക്ക് അറിയിപ്പ് നൽകുന്നതിൽ പ്രശ്നങ്ങൾ ഉണ്ടാകുന്നുണ്ടെങ്കിൽ മാത്രം ഇത് പ്രവർത്തനക്ഷമമാക്കുക.</string>
     <!-- Button label that enables the "Stay connected in background" setting from a confirmation dialog -->
     <string name="DataAndStorageSettingsFragment__enable">പ്രവർത്തനക്ഷമമാക്കുക</string>
+    <!-- Body of a confirmation dialog shown when a user without Google Play Services tries to disable the "Stay connected in background" setting -->
+    <string name="DataAndStorageSettingsFragment__play_services_are_not_available_on_this_device">ഈ ഉപകരണത്തിൽ Play സേവനങ്ങൾ ലഭ്യമല്ല. ഈ ക്രമീകരണം പ്രവർത്തനരഹിതമാക്കിയാൽ, ആപ്പ് പശ്ചാത്തലത്തിലായിരിക്കുമ്പോൾ നിങ്ങൾക്ക് ഇനി സന്ദേശങ്ങൾ സ്വീകരിക്കാൻ കഴിയില്ല.</string>
+    <!-- Button label that disables the "Stay connected in background" setting from a confirmation dialog -->
+    <string name="DataAndStorageSettingsFragment__continue">തുടരുക</string>
   <!-- Setting option that can be selected to default media to be sent as high quality by default -->
   <string name="SentMediaQuality__high">ഉയർന്നത്</string>
   <!-- Setting option that can be selected to default media to be sent as standard quality by default -->
@@ -662,6 +689,31 @@
     <string name="PrivacySettingsScreen__signal">Signal</string>
     <!-- Link after the incognito keyboard disclaimer that opens a support article -->
     <string name="PrivacySettingsScreen__learn_more">കൂടുതലറിയുക</string>
+    <!-- Section header in privacy settings above the rows for hidden and blocked contacts -->
+    <string name="PrivacySettingsScreen__hidden_and_blocked">മറച്ചതും ബ്ലോക്ക് ചെയ്‌തതും</string>
+    <!-- Row label in privacy settings shown when the user has no hidden contacts or no blocked contacts -->
+    <string name="PrivacySettingsScreen__none">ഒന്നുമില്ല</string>
+    <!-- Row title in privacy settings that opens the list of contacts the user has hidden -->
+    <string name="PrivacySettingsScreen__hidden">മറച്ചവ</string>
+    <!-- Row label in privacy settings showing how many contacts the user has hidden. Placeholder is the count. -->
+    <plurals name="PrivacySettingsScreen__d_hidden_contacts">
+        <item quantity="one">ഒരു കോൺടാക്റ്റ്</item>
+        <item quantity="other">%1$d കോൺടാക്റ്റുകൾ</item>
+    </plurals>
+
+    <!-- HiddenContactsScreen -->
+    <!-- Title of the screen listing the contacts the user has hidden -->
+    <string name="HiddenContactsScreen__hidden_contacts">മറച്ച കോൺടാക്റ്റുകൾ</string>
+    <!-- Explanation at the top of the hidden contacts screen -->
+    <string name="HiddenContactsScreen__hidden_contacts_description">തിരയുമ്പോൾ മറച്ച കോൺടാക്റ്റുകൾ ദൃശ്യമാകില്ല. അവർ നിങ്ങൾക്ക് സന്ദേശമയയ്ക്കുകയാണെങ്കിൽ നിങ്ങൾക്ക് ഒരു സന്ദേശ അഭ്യർത്ഥന ലഭിക്കും. ഒരു കോൺടാക്റ്റിനെ മറച്ചത് റദ്ദാക്കാൻ അതിൽ ടാപ്പ് ചെയ്യുക.</string>
+    <!-- Shown on the hidden contacts screen when the user hasn\'t hidden anyone -->
+    <string name="HiddenContactsScreen__no_hidden_contacts">മറച്ച കോൺടാക്റ്റുകളൊന്നുമില്ല</string>
+    <!-- Dialog title asking whether to unhide a contact. Placeholder is the contact\'s name. -->
+    <string name="HiddenContactsScreen__unhide_s">%1$s എന്നയാളെ മറച്ചത് റദ്ദാക്കണോ?</string>
+    <!-- Dialog body explaining what unhiding a contact does -->
+    <string name="HiddenContactsScreen__unhide_body">തിരയുമ്പോൾ ഈ വ്യക്തി വീണ്ടും ദൃശ്യമാകും, കൂടാതെ അവർക്ക് നിങ്ങളുടെ പ്രൊഫൈൽ കാണാനും കഴിയും.</string>
+    <!-- Dialog button that unhides a contact -->
+    <string name="HiddenContactsScreen__unhide">മറച്ചത് റദ്ദാക്കുക</string>
 
     <!-- AppSettingsScreen -->
     <!-- String alerting user that backup storage limit has been reached -->
@@ -1177,25 +1229,25 @@
     <!-- AdvancedPrivacySettingsScreen -->
     <string name="preferences__advanced">വിപുലമായ</string>
     <string name="preferences_advanced__always_relay_calls">എല്ലായ്പ്പോഴും കോളുകൾ റിലേ ചെയ്യുക</string>
-    <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">നിങ്ങളുടെ കോൺ‌ടാക്റ്റിലേക്ക് നിങ്ങളുടെ ഐ‌പി വിലാസം വെളിപ്പെടുത്തുന്നത് ഒഴിവാക്കാൻ സിഗ്നൽ സെർവർ വഴി എല്ലാ കോളുകളും റിലേ ചെയ്യുക. പ്രവർത്തനക്ഷമമാക്കുന്നത് കോൾ നിലവാരം കുറയ്ക്കും.</string>
+    <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">നിങ്ങളുടെ കോൺ‌ടാക്റ്റിലേക്ക് നിങ്ങളുടെ ഐ‌പി വിലാസം വെളിപ്പെടുത്തുന്നത് ഒഴിവാക്കാൻ Signal സെർവർ വഴി എല്ലാ കോളുകളും റിലേ ചെയ്യുക. പ്രവർത്തനക്ഷമമാക്കുന്നത് കോൾ നിലവാരം കുറയ്ക്കും.</string>
     <!-- Heading for the \'censorship circumvention\' section of privacy preferences -->
     <string name="preferences_communication__category_censorship_circumvention">സെൻസർഷിപ്പ് ഒഴിവാക്കൽ</string>
     <!-- Title of the \'censorship circumvention\' toggle switch -->
     <string name="preferences_communication__censorship_circumvention">സെൻസർഷിപ്പ് ഒഴിവാക്കൽ</string>
-    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">പ്രാപ്യമാക്കിയിട്ടുണ്ടെങ്കിൽ, സെൻസർഷിപ്പ് ഒഴിവാക്കാൻ Signal ശ്രമം നടത്തും. Signal സെൻസർ ചെയ്യുന്ന ഒരു ലൊക്കേഷനിൽ ആണ് നിങ്ങളെങ്കിൽ ഈ ഫീച്ചർ പ്രാപ്യമാക്കരുത്.</string>
+    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">പ്രവർത്തനക്ഷമമാക്കിയാൽ, സെൻസർഷിപ്പ് ഒഴിവാക്കാൻ Signal ശ്രമം നടത്തും. Signal സെൻസർ ചെയ്യുന്ന ഒരു ലൊക്കേഷനിൽ ആണ് നിങ്ങളെങ്കിൽ ഈ സവിശേഷത പ്രവർത്തനക്ഷമമാക്കരുത്.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that we automatically enabled it because we believe you\'re in a censored country -->
-    <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">നിങ്ങളുടെ അക്കൗണ്ടിലെ ഫോൺ നമ്പർ അടിസ്ഥാനമാക്കി സെൻസർഷിപ്പ് ഒഴിവാക്കൽ പ്രാപ്തമാക്കിയിട്ടുണ്ട്.</string>
+    <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">നിങ്ങളുടെ അക്കൗണ്ടിലെ ഫോൺ നമ്പർ അടിസ്ഥാനമാക്കി സെൻസർഷിപ്പ് ഒഴിവാക്കൽ പ്രവർത്തനക്ഷമമാക്കിയിട്ടുണ്ട്.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you disabled it even though we believe you\'re in a censored country -->
-    <string name="preferences_communication__censorship_circumvention_you_have_manually_disabled">സെൻസർഷിപ്പ് ഒഴിവാക്കൽ നിങ്ങൾ മാന്വൽ ആയി പ്രാപ്തമല്ലാതാക്കിയിരിക്കുന്നു.</string>
+    <string name="preferences_communication__censorship_circumvention_you_have_manually_disabled">സെൻസർഷിപ്പ് ഒഴിവാക്കൽ നിങ്ങൾ മാന്വൽ ആയി പ്രവർത്തനക്ഷമമല്ലാതാക്കിയിരിക്കുന്നു.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re already connected to the Signal service -->
     <string name="preferences_communication__censorship_circumvention_is_not_necessary_you_are_already_connected">സെൻസർഷിപ്പ് ഒഴിവാക്കൽ നിർബന്ധമല്ല; നിങ്ങൾ ഇതിനകം തന്നെ Signal സേവനങ്ങളുമായി കണക്ട് ആയിരിക്കുന്നു.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re not connected to the internet -->
-    <string name="preferences_communication__censorship_circumvention_can_only_be_activated_when_connected_to_the_internet">ഇൻ്റർനെറ്റുമായി കണക്ട് ചെയ്യുമ്പോൾ മാത്രമേ സെൻസർഷിപ്പ് ഒഴിവാക്കൽ പ്രാപ്തമാക്കാൻ സാധിക്കുകയുള്ളൂ.</string>
+    <string name="preferences_communication__censorship_circumvention_can_only_be_activated_when_connected_to_the_internet">ഇൻ്റർനെറ്റുമായി കണക്ട് ചെയ്യുമ്പോൾ മാത്രമേ സെൻസർഷിപ്പ് ഒഴിവാക്കൽ പ്രവർത്തനക്ഷമമാക്കാൻ സാധിക്കുകയുള്ളൂ.</string>
     <string name="preferences_communication__category_sealed_sender">സീൽഡ് സെൻഡർ</string>
     <string name="AdvancedPrivacySettingsFragment__show_status_icon">സ്റ്റാറ്റസ് ചിഹ്നം കാണിക്കുക</string>
     <string name="AdvancedPrivacySettingsFragment__show_an_icon">സീൽഡ് സെൻഡർ ഉപയോഗിച്ച് ഡെലിവറി ചെയ്യുമ്പോൾ സന്ദേശ വിശദാംശങ്ങളിൽ ഒരു ചിഹ്നം കാണിക്കുക.</string>
     <string name="preferences_communication__sealed_sender_allow_from_anyone">ആരിൽ നിന്നും അനുവദിക്കുക</string>
-    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">കോൺടാക്ടുകൾ അല്ലാത്തവരിൽ നിന്നും നിങ്ങളുടെ പ്രൊഫൈൽ പങ്കിടാത്തവരായ ആളുകളിൽ നിന്നും വരുന്ന സന്ദേശങ്ങൾക്കായി സീൽഡ് സെൻഡർ പ്രാപ്തമാക്കുക.</string>
+    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">കോൺടാക്ടുകൾ അല്ലാത്തവരിൽ നിന്നും നിങ്ങളുടെ പ്രൊഫൈൽ പങ്കിടാത്തവരായ ആളുകളിൽ നിന്നും വരുന്ന സന്ദേശങ്ങൾക്കായി സീൽഡ് സെൻഡർ പ്രവർത്തനക്ഷമമാക്കുക.</string>
     <!-- Preference title for automatic key verification -->
     <string name="preferences_automatic_key_verification">ഓട്ടോമാറ്റിക്ക് കീ വെരിഫിക്കേഷൻ</string>
     <!-- Preference summary for automatic key verification -->
@@ -1204,8 +1256,8 @@
     <!-- ExpireTimerSettingsScreen -->
     <!-- Title of the screen for choosing a disappearing messages timer -->
     <string name="ExpireTimerSettingsScreen__disappearing_messages">അപ്രത്യക്ഷമാകുന്ന സന്ദേശങ്ങൾ</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">പ്രാപ്തമാക്കുമ്പോൾ, നിങ്ങൾ ആരംഭിച്ച പുതിയ ചാറ്റുകളിൽ അയയ്ക്കുകയും സ്വീകരിക്കുകയും ചെയ്യുന്ന പുതിയ സന്ദേശങ്ങള്‍ കണ്ടശേഷം അപ്രത്യക്ഷമാകും.</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">പ്രാപ്തമാക്കുമ്പോൾ, ഈ ചാറ്റിൽ അയയ്ക്കുകയും സ്വീകരിക്കുകയും ചെയ്യുന്ന പുതിയ സന്ദേശങ്ങള്‍ കണ്ടശേഷം അപ്രത്യക്ഷമാകും.</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">പ്രവർത്തനക്ഷമമാക്കുമ്പോൾ, നിങ്ങൾ ആരംഭിച്ച പുതിയ ചാറ്റുകളിൽ അയയ്ക്കുകയും സ്വീകരിക്കുകയും ചെയ്യുന്ന പുതിയ സന്ദേശങ്ങള്‍ കണ്ടശേഷം അപ്രത്യക്ഷമാകും.</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">പ്രവർത്തനക്ഷമമാക്കുമ്പോൾ, ഈ ചാറ്റിൽ അയയ്ക്കുകയും സ്വീകരിക്കുകയും ചെയ്യുന്ന പുതിയ സന്ദേശങ്ങള്‍ കണ്ടശേഷം അപ്രത്യക്ഷമാകും.</string>
     <string name="ExpireTimerSettingsFragment__off">ഓഫ്</string>
     <string name="ExpireTimerSettingsFragment__4_weeks">4 ആഴ്ചകൾ</string>
     <string name="ExpireTimerSettingsFragment__1_week">1 ആഴ്ച</string>
@@ -1215,7 +1267,7 @@
     <string name="ExpireTimerSettingsFragment__5_minutes">5 മിനിറ്റ്</string>
     <string name="ExpireTimerSettingsFragment__30_seconds">30 സെക്കൻഡ്</string>
     <string name="ExpireTimerSettingsFragment__custom_time">ഇഷ്‌ടാനുസൃത സമയം</string>
-    <string name="ExpireTimerSettingsFragment__save">സംരക്ഷിക്കൂ</string>
+    <string name="ExpireTimerSettingsFragment__save">സംരക്ഷിക്കുക</string>
 
     <!-- AccountSettingsScreen -->
     <!-- Snackbar shown after the user creates a PIN -->
@@ -1223,25 +1275,32 @@
     <!-- Snackbar shown when wiping all of the app\'s data on this device fails -->
     <string name="AccountSettingsScreen__delete_all_data_failed">ഡാറ്റ ഇല്ലാതാക്കാനായില്ല</string>
     <string name="preferences_app_protection__failed_to_enable_registration_lock">രജിസ്ട്രേഷൻ ലോക്ക് പ്രവർത്തനക്ഷമമാക്കുന്നതിൽ പരാജയപ്പെട്ടു.</string>
-    <string name="preferences_app_protection__failed_to_disable_registration_lock">രജിസ്ട്രേഷൻ ലോക്ക് അപ്രാപ്തമാക്കുന്നതിൽ പരാജയപ്പെട്ടു.</string>
+    <string name="preferences_app_protection__failed_to_disable_registration_lock">രജിസ്ട്രേഷൻ ലോക്ക് പ്രവർത്തനരഹിതമാക്കുന്നതിൽ പരാജയപ്പെട്ടു.</string>
 
     <!-- AdvancedPinSettingsScreen -->
     <!-- Title of toolbar for the advanced pin settings screen -->
     <string name="preferences__advanced_pin_settings_title">വിപുലമായ PIN ക്രമീകരണങ്ങൾ</string>
     <string name="preferences__enable_pin">PIN പ്രവർത്തനക്ഷമമാക്കുക</string>
-    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN-ഉകൾ / പിന്നുകൾ (സിഗ്നൽ ഉപയോഗിച്ച് സംഭരിച്ചിരിക്കുന്ന) വിവരങ്ങൾ എൻ‌ക്രിപ്റ്റ് ചെയ്യുന്നതിനാൽ നിങ്ങൾക്ക് മാത്രമേ ഇത് ആക്സസ് ചെയ്യാൻ കഴിയൂ. നിങ്ങൾ വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്യുമ്പോൾ നിങ്ങളുടെ പ്രൊഫൈൽ, ക്രമീകരണങ്ങൾ, കോൺടാക്റ്റുകൾ എന്നിവ പുന.സ്ഥാപിക്കും. അപ്ലിക്കേഷൻ തുറക്കാൻ നിങ്ങളുടെ PIN (പിൻ) ആവശ്യം വരില്ല.</string>
-    <string name="preferences__disable_pin">PIN അപ്രാപ്‌തമാക്കുക</string>
-    <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">നിങ്ങൾ‌ PIN (പിൻ) അപ്രാപ്‌തമാക്കുകയാണെങ്കിൽ‌, നിങ്ങൾ‌ സ്വമേധയാ ബാക്കപ്പുചെയ്‌ത് പുന.സ്ഥാപിച്ചില്ലെങ്കിൽ,‌ നിങ്ങൾ‌ സിഗ്നൽ‌ വീണ്ടും രജിസ്റ്റർ‌ ചെയ്യുമ്പോൾ‌ എല്ലാ ഡാറ്റയും നഷ്‌ടപ്പെടും. PIN (പിൻ) പ്രവർത്തനരഹിതമാക്കിയിരിക്കുമ്പോൾ നിങ്ങൾക്ക് രജിസ്ട്രേഷൻ ലോക്ക് ഓണാക്കാൻ കഴിയില്ല.</string>
+    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">Signal-ൽ സംഭരിച്ചിരിക്കുന്ന വിവരങ്ങൾ എൻക്രിപ്റ്റ് ചെയ്തു സംരക്ഷിക്കാൻ PIN-കൾ സഹായിക്കുന്നു; അതിനാൽ നിങ്ങൾക്ക് മാത്രമേ അവ ആക്‌സസ് ചെയ്യാൻ കഴിയൂ. ആപ്പ് വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്യുമ്പോൾ നിങ്ങളുടെ പ്രൊഫൈൽ, ക്രമീകരണങ്ങൾ, കോൺടാക്റ്റുകൾ എന്നിവ തിരികെ ലഭിക്കും. ആപ്പ് തുറക്കാൻ നിങ്ങൾക്ക് PIN ആവശ്യമില്ല.</string>
+    <string name="preferences__disable_pin">PIN പ്രവർത്തനരഹിതമാക്കുക</string>
+    <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">നിങ്ങൾ‌ PIN പ്രവർത്തനരഹിതമാക്കിയാൽ, നിങ്ങൾ‌ നേരിട്ട് ബാക്കപ്പുചെയ്‌ത് പുനഃസ്ഥാപിച്ചില്ലെങ്കിൽ,‌ നിങ്ങൾ‌ Signal വീണ്ടും രജിസ്റ്റർ‌ ചെയ്യുമ്പോൾ‌ എല്ലാ ഡാറ്റയും നഷ്‌ടപ്പെടും. PIN പ്രവർത്തനരഹിതമാക്കിയിരിക്കുമ്പോൾ നിങ്ങൾക്ക് രജിസ്ട്രേഷൻ ലോക്ക് ഓണാക്കാൻ കഴിയില്ല.</string>
     <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">രജിസ്ട്രേഷൻ ലോക്കിന് PIN ആവശ്യമാണ്. PIN പ്രവർത്തനരഹിതമാക്കുന്നതിന് ആദ്യം രജിസ്‌ട്രേഷൻ ലോക്ക് പ്രവർത്തനരഹിതമാക്കുക.</string>
-    <string name="ApplicationPreferencesActivity_record_payments_recovery_phrase">പേയ്മെന്റുകൾ വീണ്ടെടുക്കൽ വാക്യം രേഖപ്പെടുത്തുക</string>
-    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">നിങ്ങളുടെ PIN പ്രവർത്തനരഹിതമാക്കുന്നതിന് മുമ്പ്, നിങ്ങളുടെ പേയ്മെന്റ് അക്കൗണ്ട് വീണ്ടെടുക്കാൻ കഴിയുമെന്ന് ഉറപ്പാക്കുന്നതിന് നിങ്ങളുടെ പേയ്മെന്റുകൾ വീണ്ടെടുക്കൽ വാക്യം നിങ്ങൾ റെക്കോർഡ് ചെയ്യണം.</string>
-    <string name="ApplicationPreferencesActivity_record_phrase">വാക്യം രേഖപ്പെടുത്തുക</string>
+    <string name="ApplicationPreferencesActivity_record_payments_recovery_phrase">പേയ്മെന്റുകൾ വീണ്ടെടുക്കൽ വാചകം രേഖപ്പെടുത്തുക</string>
+    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">നിങ്ങളുടെ PIN പ്രവർത്തനരഹിതമാക്കുന്നതിന് മുമ്പ്, നിങ്ങളുടെ പേയ്മെന്റ് അക്കൗണ്ട് വീണ്ടെടുക്കാൻ കഴിയുമെന്ന് ഉറപ്പാക്കുന്നതിന് നിങ്ങളുടെ പേയ്മെന്റുകൾ വീണ്ടെടുക്കൽ വാചകം നിങ്ങൾ രേഖപ്പെടുത്തണം.</string>
+    <string name="ApplicationPreferencesActivity_record_phrase">വാചകം രേഖപ്പെടുത്തുക</string>
     <!-- The title of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_title">ഒരു പുതിയ വീണ്ടെടുക്കൽ കീ സൃഷ്ടിക്കുക</string>
     <!-- The body of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
-    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_body">നിങ്ങളുടെ PIN പ്രവർത്തനരഹിതമാക്കുന്നതിന് മുമ്പ് ഒരു പുതിയ വീണ്ടെടുക്കൽ കീ സൃഷ്ടിച്ച് റെക്കോർഡ് ചെയ്യണം.</string>
+    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_body">നിങ്ങളുടെ PIN പ്രവർത്തനരഹിതമാക്കുന്നതിന് മുമ്പ് ഒരു പുതിയ വീണ്ടെടുക്കൽ കീ സൃഷ്ടിച്ച് രേഖപ്പെടുത്തണം.</string>
     <!-- The confirmation button for a dialog letting the user know they have to rotate their recovery key if they want to disable PINs. If they click the button, they will be taken to a flow to rotate their key. -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_positive_button">കീ സൃഷ്ടിക്കുക</string>
     <string name="ApplicationPreferencesActivity_pin_created">PIN സൃഷ്ടിച്ചു.</string>
     <string name="ApplicationPreferencesActivity_pin_disabled">PIN പ്രവർത്തനരഹിതമാക്കി.</string>
+
+    <!-- Title of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard_changes">മാറ്റങ്ങൾ ഉപേക്ഷിക്കണോ?</string>
+    <!-- Body of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__you_will_lose_changes">നിങ്ങൾ വരുത്തിയ മാറ്റങ്ങൾ നഷ്ടപ്പെടും.</string>
+    <!-- Button in a dialog that throws away unsaved edits and leaves the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard">ഉപേക്ഷിക്കുക</string>
 </resources>

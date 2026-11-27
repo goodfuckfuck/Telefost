@@ -439,8 +439,31 @@
     <string name="preferences_normal">普通</string>
     <!-- Preference summary for compact navigation bar size -->
     <string name="preferences_compact">小</string>
+
+    <!-- AppearanceSettingsScreen -->
     <!-- Dialog message body explaining that we have to restart the app in order to apply the user\'s new language setting.  -->
     <string name="preferences_language_change_confirmation_message">新しい言語設定を適用するために、アプリが再起動します。</string>
+    <!-- Dialog message body shown when selecting a language that hasn\'t been downloaded yet, notifying the user that a download will happen and then restart. -->
+    <string name="preferences_language_change_download_confirmation_message">Signalは、言語パックをダウンロードすると、新しい言語設定を適用するためにアプリを再起動します。</string>
+    <!-- Dialog message shown while a language pack is being downloaded after the user picks a language. -->
+    <string name="preferences_language_change_downloading_message">言語パックをダウンロード中…</string>
+    <!-- Dialog message shown when downloading a language pack fails for a reason that trying again may fix. %1$d is Google Play\'s numeric error code, for example -6, shown so the user can report it. -->
+    <string name="preferences_language_change_download_failed_message">言語パックをダウンロードできませんでした（エラー%1$d）。インターネット接続を確認して再度試してください。</string>
+    <!-- Dialog message shown when downloading a language pack fails because the device is out of storage. -->
+    <string name="preferences_language_change_download_failed_storage_message">言語パックをダウンロードできませんでした。端末の空き容量を増やして、もう一度お試しください。</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the Google Play Store or Google Play services app is missing, or Google Play didn\'t install this copy of Signal. Directs the user to download a universal build with full language support from signal.org. "Google Play" is a product name and "signal.org" is a web address; do not translate either. -->
+    <string name="preferences_language_change_download_failed_play_unavailable_message">この Signal アプリについては、Google Playからは言語パックをダウンロードできません。signal.orgからAPKをダウンロードすればすべての言語がサポートされています。</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play Store app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_disabled_message">言語パックはGoogle Playを介してダウンロードされますが、この端末上では無効になっています。設定で有効にすると言語をダウンロードできます。</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play services app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_services_disabled_message">言語パックはGoogle Playサービスを介してダウンロードされますが、この端末上では同サービスが無効になっています。設定で有効にすると言語をダウンロードできます。</string>
+    <!-- Positive button label on the language pack download failure dialog when the Google Play Store or Google Play services app is turned off. Opens that app\'s page in system settings, where it can be turned on. -->
+    <string name="preferences_language_unavailable_open_settings">設定を開く</string>
+    <!-- Positive button label on the language pack download failure dialog. Starts the download again. -->
+    <string name="preferences_language_change_download_retry">もう一度試す</string>
+    <!-- Positive button label on the language pack download failure dialog when Google Play cannot download the pack. Opens signal.org/android/apk in a browser. -->
+    <string name="preferences_language_unavailable_visit_website">Webサイトへアクセス</string>
+
     <!-- Phone number heading displayed as a screen title -->
     <string name="preferences_app_protection__phone_number">電話番号</string>
     <!-- Section title above two radio buttons for enabling and disabling phone number display -->
@@ -500,6 +523,10 @@
     <string name="DataAndStorageSettingsFragment__staying_connected_while_in_the_background_will_likely_result_in_increased_battery_usage">バックグラウンドで接続したままにすると、バッテリーの消費量が増える可能性があります。ほとんどの端末ではこの設定は必要ではありません。通知が届かないなどの問題がある時のみ有効にしてください。</string>
     <!-- Button label that enables the "Stay connected in background" setting from a confirmation dialog -->
     <string name="DataAndStorageSettingsFragment__enable">有効にする</string>
+    <!-- Body of a confirmation dialog shown when a user without Google Play Services tries to disable the "Stay connected in background" setting -->
+    <string name="DataAndStorageSettingsFragment__play_services_are_not_available_on_this_device">Google Playサービスはこの端末ではご利用になれません。この設定が無効になっていると、アプリがバックグランドで動作している間メッセージを受け取れなくなります。</string>
+    <!-- Button label that disables the "Stay connected in background" setting from a confirmation dialog -->
+    <string name="DataAndStorageSettingsFragment__continue">続行</string>
   <!-- Setting option that can be selected to default media to be sent as high quality by default -->
   <string name="SentMediaQuality__high">高画質</string>
   <!-- Setting option that can be selected to default media to be sent as standard quality by default -->
@@ -660,6 +687,30 @@
     <string name="PrivacySettingsScreen__signal">Signal</string>
     <!-- Link after the incognito keyboard disclaimer that opens a support article -->
     <string name="PrivacySettingsScreen__learn_more">詳しく見る</string>
+    <!-- Section header in privacy settings above the rows for hidden and blocked contacts -->
+    <string name="PrivacySettingsScreen__hidden_and_blocked">非表示とブロック</string>
+    <!-- Row label in privacy settings shown when the user has no hidden contacts or no blocked contacts -->
+    <string name="PrivacySettingsScreen__none">なし</string>
+    <!-- Row title in privacy settings that opens the list of contacts the user has hidden -->
+    <string name="PrivacySettingsScreen__hidden">非表示</string>
+    <!-- Row label in privacy settings showing how many contacts the user has hidden. Placeholder is the count. -->
+    <plurals name="PrivacySettingsScreen__d_hidden_contacts">
+        <item quantity="other">%1$d人</item>
+    </plurals>
+
+    <!-- HiddenContactsScreen -->
+    <!-- Title of the screen listing the contacts the user has hidden -->
+    <string name="HiddenContactsScreen__hidden_contacts">非表示にした連絡先</string>
+    <!-- Explanation at the top of the hidden contacts screen -->
+    <string name="HiddenContactsScreen__hidden_contacts_description">非表示にした連絡先は検索しても表示されません。相手があなたにメッセージを送信すると、メッセージリクエストを受け取ることになります。連絡先をタップすると、非表示が解除されます。</string>
+    <!-- Shown on the hidden contacts screen when the user hasn\'t hidden anyone -->
+    <string name="HiddenContactsScreen__no_hidden_contacts">非表示にした連絡先はいません</string>
+    <!-- Dialog title asking whether to unhide a contact. Placeholder is the contact\'s name. -->
+    <string name="HiddenContactsScreen__unhide_s">%1$sの非表示を解除しますか？</string>
+    <!-- Dialog body explaining what unhiding a contact does -->
+    <string name="HiddenContactsScreen__unhide_body">解除すると、相手は検索結果に表示されるようになり、また、あなたのプロフィールを閲覧できるようになります。</string>
+    <!-- Dialog button that unhides a contact -->
+    <string name="HiddenContactsScreen__unhide">再表示</string>
 
     <!-- AppSettingsScreen -->
     <!-- String alerting user that backup storage limit has been reached -->
@@ -1175,9 +1226,9 @@
     <string name="preferences_advanced__always_relay_calls">通話を常に中継する</string>
     <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">すべての通話をSignalサーバで中継して、相手にIPアドレスを知られることを防ぎます。ただし通話の品質は下がります。</string>
     <!-- Heading for the \'censorship circumvention\' section of privacy preferences -->
-    <string name="preferences_communication__category_censorship_circumvention">閲覧回避</string>
+    <string name="preferences_communication__category_censorship_circumvention">検閲回避</string>
     <!-- Title of the \'censorship circumvention\' toggle switch -->
-    <string name="preferences_communication__censorship_circumvention">閲覧回避</string>
+    <string name="preferences_communication__censorship_circumvention">検閲回避</string>
     <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">有効にすると、Signalは検閲回避を試行します。Signalが検閲される場所にいない場合は、有効にしないでください。</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that we automatically enabled it because we believe you\'re in a censored country -->
     <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">アカウントの電話番号に基づいた、検閲回避が有効になりました。</string>
@@ -1187,15 +1238,15 @@
     <string name="preferences_communication__censorship_circumvention_is_not_necessary_you_are_already_connected">すでにSignalサービスに接続しているため、検問回避は不要です。</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re not connected to the internet -->
     <string name="preferences_communication__censorship_circumvention_can_only_be_activated_when_connected_to_the_internet">検閲回避は、インターネットに接続されている場合にのみ有効です。</string>
-    <string name="preferences_communication__category_sealed_sender">送信者の秘匿化</string>
+    <string name="preferences_communication__category_sealed_sender">送信者の保護</string>
     <string name="AdvancedPrivacySettingsFragment__show_status_icon">ステータスアイコンを表示する</string>
-    <string name="AdvancedPrivacySettingsFragment__show_an_icon">送信者を秘匿化して届けられたメッセージの詳細で、アイコンを表示します。</string>
+    <string name="AdvancedPrivacySettingsFragment__show_an_icon">送信者の保護を使用して届けられたメッセージの詳細で、アイコンを表示します。</string>
     <string name="preferences_communication__sealed_sender_allow_from_anyone">全員を許可する</string>
-    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">あなたのプロフィールを共有しておらず、連絡先にもないユーザーからのメッセージ受信において、送信者の秘匿化を有効にします。</string>
+    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">あなたのプロフィールを共有しておらず、連絡先にもないユーザーからのメッセージ受信において、送信者の保護を有効にします。</string>
     <!-- Preference title for automatic key verification -->
-    <string name="preferences_automatic_key_verification">自動キー確認</string>
+    <string name="preferences_automatic_key_verification">自動キー検証</string>
     <!-- Preference summary for automatic key verification -->
-    <string name="preferences_automatic_key_verification_body">有効にすると、Signalは1対1のチャットの暗号化を自動的に確認します。</string>
+    <string name="preferences_automatic_key_verification_body">有効にすると、Signalは1対1のチャットの暗号化を自動的に検証します。</string>
 
     <!-- ExpireTimerSettingsScreen -->
     <!-- Title of the screen for choosing a disappearing messages timer -->
@@ -1230,14 +1281,21 @@
     <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">PINを無効にすると、自身でバックアップと復元を行わない限り、Signalに再登録する際すべてのデータが失われます。PINを無効にしている間は登録ロックは使用できません。</string>
     <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">登録ロックを使うにはPINが必要です。PINを無効にするには、まず登録ロックを無効にしてください。</string>
     <string name="ApplicationPreferencesActivity_record_payments_recovery_phrase">決済機能リカバリーフレーズの保管</string>
-    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">PINを無効にする前に、口座を回復するためのリカバリーフレーズを保管しなければなりません。</string>
+    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">PINを無効にする前に、決済口座を回復するためのリカバリーフレーズを保管しなければなりません。</string>
     <string name="ApplicationPreferencesActivity_record_phrase">フレーズを記録</string>
     <!-- The title of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
-    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_title">新しいリカバリーキーを作成する</string>
+    <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_title">新しい回復キーを作成する</string>
     <!-- The body of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_body">PINを無効にする前に、新しい回復キーを作成・記録する必要があります。</string>
     <!-- The confirmation button for a dialog letting the user know they have to rotate their recovery key if they want to disable PINs. If they click the button, they will be taken to a flow to rotate their key. -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_positive_button">キーを作成</string>
     <string name="ApplicationPreferencesActivity_pin_created">PINを作成しました。</string>
     <string name="ApplicationPreferencesActivity_pin_disabled">PINを無効にしました。</string>
+
+    <!-- Title of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard_changes">変更を破棄しますか？</string>
+    <!-- Body of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__you_will_lose_changes">おこなった変更が破棄されます。</string>
+    <!-- Button in a dialog that throws away unsaved edits and leaves the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard">破棄する</string>
 </resources>

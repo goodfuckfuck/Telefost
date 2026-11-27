@@ -442,8 +442,31 @@
     <string name="preferences_normal">Normální</string>
     <!-- Preference summary for compact navigation bar size -->
     <string name="preferences_compact">Kompaktní</string>
+
+    <!-- AppearanceSettingsScreen -->
     <!-- Dialog message body explaining that we have to restart the app in order to apply the user\'s new language setting.  -->
     <string name="preferences_language_change_confirmation_message">Aplikace se restartuje a použije nové nastavení jazyka.</string>
+    <!-- Dialog message body shown when selecting a language that hasn\'t been downloaded yet, notifying the user that a download will happen and then restart. -->
+    <string name="preferences_language_change_download_confirmation_message">Signal will download the language pack and then restart the app to apply the new language setting.</string>
+    <!-- Dialog message shown while a language pack is being downloaded after the user picks a language. -->
+    <string name="preferences_language_change_downloading_message">Downloading language pack…</string>
+    <!-- Dialog message shown when downloading a language pack fails for a reason that trying again may fix. %1$d is Google Play\'s numeric error code, for example -6, shown so the user can report it. -->
+    <string name="preferences_language_change_download_failed_message">Couldn\'t download language pack (error %1$d). Check your connection and try again.</string>
+    <!-- Dialog message shown when downloading a language pack fails because the device is out of storage. -->
+    <string name="preferences_language_change_download_failed_storage_message">Couldn\'t download language pack. Free up space on your device and try again.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the Google Play Store or Google Play services app is missing, or Google Play didn\'t install this copy of Signal. Directs the user to download a universal build with full language support from signal.org. "Google Play" is a product name and "signal.org" is a web address; do not translate either. -->
+    <string name="preferences_language_change_download_failed_play_unavailable_message">Google Play can\'t download language packs for this copy of Signal. Download an APK from signal.org to use all supported languages.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play Store app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_disabled_message">Language packs are downloaded through Google Play, which is turned off on this device. Enable it in settings to download this language.</string>
+    <!-- Dialog message shown when a language pack can\'t be downloaded because the user turned off the Google Play services app in system settings. "Google Play" is a product name; do not translate it. -->
+    <string name="preferences_language_change_download_failed_play_services_disabled_message">Language packs are downloaded through Google Play services, which is turned off on this device. Enable it in settings to download this language.</string>
+    <!-- Positive button label on the language pack download failure dialog when the Google Play Store or Google Play services app is turned off. Opens that app\'s page in system settings, where it can be turned on. -->
+    <string name="preferences_language_unavailable_open_settings">Otevřít nastavení</string>
+    <!-- Positive button label on the language pack download failure dialog. Starts the download again. -->
+    <string name="preferences_language_change_download_retry">Zkusit znovu</string>
+    <!-- Positive button label on the language pack download failure dialog when Google Play cannot download the pack. Opens signal.org/android/apk in a browser. -->
+    <string name="preferences_language_unavailable_visit_website">Visit website</string>
+
     <!-- Phone number heading displayed as a screen title -->
     <string name="preferences_app_protection__phone_number">Telefonní číslo</string>
     <!-- Section title above two radio buttons for enabling and disabling phone number display -->
@@ -503,6 +526,10 @@
     <string name="DataAndStorageSettingsFragment__staying_connected_while_in_the_background_will_likely_result_in_increased_battery_usage">Trvalé připojení na pozadí pravděpodobně povede ke zvýšené spotřebě baterie. U většiny zařízení to není nutné. Tuto možnost povolte pouze v případě, že máte problémy s doručováním oznámení.</string>
     <!-- Button label that enables the "Stay connected in background" setting from a confirmation dialog -->
     <string name="DataAndStorageSettingsFragment__enable">Povolit</string>
+    <!-- Body of a confirmation dialog shown when a user without Google Play Services tries to disable the "Stay connected in background" setting -->
+    <string name="DataAndStorageSettingsFragment__play_services_are_not_available_on_this_device">Play Services are not available on this device. If this setting is disabled, you will no longer be able to receive messages while the app is in the background.</string>
+    <!-- Button label that disables the "Stay connected in background" setting from a confirmation dialog -->
+    <string name="DataAndStorageSettingsFragment__continue">Pokračovat</string>
   <!-- Setting option that can be selected to default media to be sent as high quality by default -->
   <string name="SentMediaQuality__high">Vysoká</string>
   <!-- Setting option that can be selected to default media to be sent as standard quality by default -->
@@ -666,6 +693,33 @@
     <string name="PrivacySettingsScreen__signal">Signal</string>
     <!-- Link after the incognito keyboard disclaimer that opens a support article -->
     <string name="PrivacySettingsScreen__learn_more">Zjistit více</string>
+    <!-- Section header in privacy settings above the rows for hidden and blocked contacts -->
+    <string name="PrivacySettingsScreen__hidden_and_blocked">Hidden and blocked</string>
+    <!-- Row label in privacy settings shown when the user has no hidden contacts or no blocked contacts -->
+    <string name="PrivacySettingsScreen__none">Žádný</string>
+    <!-- Row title in privacy settings that opens the list of contacts the user has hidden -->
+    <string name="PrivacySettingsScreen__hidden">Hidden</string>
+    <!-- Row label in privacy settings showing how many contacts the user has hidden. Placeholder is the count. -->
+    <plurals name="PrivacySettingsScreen__d_hidden_contacts">
+        <item quantity="one">%1$d kontakt</item>
+        <item quantity="few">%1$d kontakty</item>
+        <item quantity="many">%1$d kontaktů</item>
+        <item quantity="other">%1$d kontaktů</item>
+    </plurals>
+
+    <!-- HiddenContactsScreen -->
+    <!-- Title of the screen listing the contacts the user has hidden -->
+    <string name="HiddenContactsScreen__hidden_contacts">Hidden contacts</string>
+    <!-- Explanation at the top of the hidden contacts screen -->
+    <string name="HiddenContactsScreen__hidden_contacts_description">Hidden contacts don\'t show up when searching. You\'ll get a message request if they message you. Tap a contact to unhide them.</string>
+    <!-- Shown on the hidden contacts screen when the user hasn\'t hidden anyone -->
+    <string name="HiddenContactsScreen__no_hidden_contacts">No hidden contacts</string>
+    <!-- Dialog title asking whether to unhide a contact. Placeholder is the contact\'s name. -->
+    <string name="HiddenContactsScreen__unhide_s">Unhide %1$s?</string>
+    <!-- Dialog body explaining what unhiding a contact does -->
+    <string name="HiddenContactsScreen__unhide_body">This person will show up when searching again, and will be able to see your profile.</string>
+    <!-- Dialog button that unhides a contact -->
+    <string name="HiddenContactsScreen__unhide">Zobrazit</string>
 
     <!-- AppSettingsScreen -->
     <!-- String alerting user that backup storage limit has been reached -->
@@ -1183,37 +1237,37 @@
     <string name="SelectRecipientsScreen__allowed_notifications">Povolená oznámení</string>
 
     <!-- AdvancedPrivacySettingsScreen -->
-    <string name="preferences__advanced">Rozšířené možnosti</string>
-    <string name="preferences_advanced__always_relay_calls">Vždy předávat hovory</string>
-    <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">Přenášet všechna volání přes servery Signal, aby nedošlo k odhalení vaší IP adresy volanému. Povolením dojde ke zhoršení kvality hovoru.</string>
+    <string name="preferences__advanced">Pokročilé možnosti</string>
+    <string name="preferences_advanced__always_relay_calls">Vždy přesměrovávat hovory</string>
+    <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">Přesměrovávat všechny hovory přes servery Signal, aby se vašemu kontaktu nezobrazila vaše IP adresa. Povolením této funkce se sníží kvalita hovoru.</string>
     <!-- Heading for the \'censorship circumvention\' section of privacy preferences -->
     <string name="preferences_communication__category_censorship_circumvention">Obcházení cenzury</string>
     <!-- Title of the \'censorship circumvention\' toggle switch -->
     <string name="preferences_communication__censorship_circumvention">Obcházení cenzury</string>
-    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">Pokud je povoleno, Signal se pokusí obejít cenzuru. Nepovolujte v místech, kde Signal není cenzurován.</string>
+    <string name="preferences_communication__censorship_circumvention_if_enabled_signal_will_attempt_to_circumvent_censorship">Pokud tuto funkci zapnete, Signal se pokusí obejít cenzuru. Zapínejte ji pouze v místech, kde je Signal cenzurován.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that we automatically enabled it because we believe you\'re in a censored country -->
     <string name="preferences_communication__censorship_circumvention_has_been_activated_based_on_your_accounts_phone_number">Obcházení cenzury bylo aktivováno na základě vašeho telefonního čísla.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you disabled it even though we believe you\'re in a censored country -->
-    <string name="preferences_communication__censorship_circumvention_you_have_manually_disabled">Ručně jste zakázal(a) obcházení cenzury.</string>
+    <string name="preferences_communication__censorship_circumvention_you_have_manually_disabled">Ručně jste deaktivovali obcházení cenzury.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re already connected to the Signal service -->
     <string name="preferences_communication__censorship_circumvention_is_not_necessary_you_are_already_connected">Obcházení cenzury není nutné; již jste připojeni ke službě Signal.</string>
     <!-- Summary text for \'censorship circumvention\' toggle. Indicates that you cannot use it because you\'re not connected to the internet -->
-    <string name="preferences_communication__censorship_circumvention_can_only_be_activated_when_connected_to_the_internet">Obcházení cenzury může být povoleno pouze pokud jste připojeni k internetu.</string>
-    <string name="preferences_communication__category_sealed_sender">Utajený odesílatel</string>
+    <string name="preferences_communication__censorship_circumvention_can_only_be_activated_when_connected_to_the_internet">Obcházení cenzury může být povoleno pouze, pokud jste připojeni k internetu.</string>
+    <string name="preferences_communication__category_sealed_sender">Zapečetěný odesílatel</string>
     <string name="AdvancedPrivacySettingsFragment__show_status_icon">Zobrazit stavovou ikonu</string>
-    <string name="AdvancedPrivacySettingsFragment__show_an_icon">Zobrazení ikony v podrobnostech zprávy, pokud byla doručena pomocí utajeného odesílatele.</string>
+    <string name="AdvancedPrivacySettingsFragment__show_an_icon">V podrobnostech zprávy zobrazit ikonu, pokud byla doručena pomocí zapečetěného odesílatele.</string>
     <string name="preferences_communication__sealed_sender_allow_from_anyone">Povolit od kohokoliv</string>
-    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">Povolit utajené odesílatele pro příchozí zprávy od lidí, které nemáte kontaktech a se kterými nesdílíte váš profil.</string>
+    <string name="preferences_communication__sealed_sender_allow_from_anyone_description">Povolit zapečetěného odesílatele pro příchozí zprávy od lidí, které nemáte kontaktech a se kterými nesdílíte svůj profil.</string>
     <!-- Preference title for automatic key verification -->
     <string name="preferences_automatic_key_verification">Automatické ověření klíče</string>
     <!-- Preference summary for automatic key verification -->
-    <string name="preferences_automatic_key_verification_body">Pokud je tato funkce povolena, služba Signal se pokusí automaticky ověřit šifrování 1:1 chatů.</string>
+    <string name="preferences_automatic_key_verification_body">Pokud tuto funkci zapnete, Signal se pokusí automaticky ověřovat šifrování soukromých chatů.</string>
 
     <!-- ExpireTimerSettingsScreen -->
     <!-- Title of the screen for choosing a disappearing messages timer -->
     <string name="ExpireTimerSettingsScreen__disappearing_messages">Mizející zprávy</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">Pokud je tato funkce povolena, nové zprávy odeslané a přijaté v nových chatech, které jste zahájili, po zobrazení zmizí.</string>
-    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">Pokud je tato funkce povolena, nové zprávy odeslané a přijaté v tomto chatu po zobrazení zmizí.</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_new_chats_started_by_you_will_disappear_after_they_have_been_seen">Pokud tuto funkci zapnete, nové zprávy odeslané a přijaté v nových chatech, které zahájíte, po zobrazení zmizí.</string>
+    <string name="ExpireTimerSettingsFragment__when_enabled_new_messages_sent_and_received_in_this_chat_will_disappear_after_they_have_been_seen">Pokud tuto funkci zapnete, nové zprávy odeslané a přijaté v tomto chatu po zobrazení zmizí.</string>
     <string name="ExpireTimerSettingsFragment__off">Vyp.</string>
     <string name="ExpireTimerSettingsFragment__4_weeks">4 týdny</string>
     <string name="ExpireTimerSettingsFragment__1_week">1 týden</string>
@@ -1230,19 +1284,19 @@
     <string name="AccountSettingsScreen__pin_created">PIN vytvořen.</string>
     <!-- Snackbar shown when wiping all of the app\'s data on this device fails -->
     <string name="AccountSettingsScreen__delete_all_data_failed">Data se nepodařilo odstranit</string>
-    <string name="preferences_app_protection__failed_to_enable_registration_lock">Aktivace zámku registrace se nezdařila.</string>
-    <string name="preferences_app_protection__failed_to_disable_registration_lock">Zablokování zámku registrace se nezdařilo.</string>
+    <string name="preferences_app_protection__failed_to_enable_registration_lock">Zámek registrace se nepodařilo aktivovat.</string>
+    <string name="preferences_app_protection__failed_to_disable_registration_lock">Zámek registrace se nepodařilo deaktivovat.</string>
 
     <!-- AdvancedPinSettingsScreen -->
     <!-- Title of toolbar for the advanced pin settings screen -->
-    <string name="preferences__advanced_pin_settings_title">Rozšířené nastavení PIN</string>
-    <string name="preferences__enable_pin">Povolit PIN</string>
-    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN uchovává informace uložené v Signal zašifrované, takže pouze vy k nim můžete přistupovat. Váš profil, nastavení a kontakty budou při reinstalaci obnoveny. Pro spuštění aplikace PIN nebudete potřebovat.</string>
-    <string name="preferences__disable_pin">Deaktivovat PIN</string>
-    <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">Pokud PIN deaktivujete, tak při opětovné registraci Signal ztratíte všechna data, jestliže si je ručně nezazálohujete a neobnovíte. Když je PIN deaktivován, nemůžete si zapnout zámek registrace.</string>
-    <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">PIN je vyžadován pro zámek registrace. Nejprve prosím zakažte zámek registrace, aby bylo možné PIN deaktivovat.</string>
+    <string name="preferences__advanced_pin_settings_title">Pokročilá nastavení PIN</string>
+    <string name="preferences__enable_pin">Zapnout PIN</string>
+    <string name="preferences__pins_keep_information_stored_with_signal_encrypted_so_only_you_can_access_it">PIN uchovává informace uložené v Signal šifrované, takže k nim máte přístup pouze vy. Po opětovné instalaci aplikace se obnoví váš profil, nastavení a kontakty. K otevření aplikace PIN nepotřebujete.</string>
+    <string name="preferences__disable_pin">Vypnout PIN</string>
+    <string name="preferences__if_you_disable_the_pin_you_will_lose_all_data">Pokud PIN deaktivujete, přijdete při opětovné registraci Signal o všechna data, jestliže si je ručně nezazálohujete a neobnovíte. Pokud je PIN deaktivovaný, nelze zapnout zámek registrace.</string>
+    <string name="ApplicationPreferencesActivity_pins_are_required_for_registration_lock">PIN je vyžadován pro zámek registrace. Nejprve prosím vypnout zámek registrace, aby bylo možné PIN deaktivovat.</string>
     <string name="ApplicationPreferencesActivity_record_payments_recovery_phrase">Záznam fráze pro obnovení plateb</string>
-    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">Než budete moci deaktivovat svůj PIN, musíte si zaznamenat frázi pro obnovení plateb, abyste zajistili, že můžete obnovit svůj platební účet.</string>
+    <string name="ApplicationPreferencesActivity_before_you_can_disable_your_pin">Než budete moci deaktivovat svůj PIN, musíte si zaznamenat frázi pro obnovení plateb, abyste měli jistotu, že budete moci svůj platební účet obnovit.</string>
     <string name="ApplicationPreferencesActivity_record_phrase">Záznam fráze</string>
     <!-- The title of a dialog letting the user know they have to rotate their recovery key if they want to disable PINs -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_title">Vytvořit nový klíč pro obnovení</string>
@@ -1251,5 +1305,12 @@
     <!-- The confirmation button for a dialog letting the user know they have to rotate their recovery key if they want to disable PINs. If they click the button, they will be taken to a flow to rotate their key. -->
     <string name="AdvancedPinSettingsFragment_rotate_aep_dialog_positive_button">Vytvořit klíč</string>
     <string name="ApplicationPreferencesActivity_pin_created">PIN vytvořen.</string>
-    <string name="ApplicationPreferencesActivity_pin_disabled">PIN zakázán.</string>
+    <string name="ApplicationPreferencesActivity_pin_disabled">PIN byl deaktivován.</string>
+
+    <!-- Title of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard_changes">Zahodit změny?</string>
+    <!-- Body of a dialog asking whether to throw away unsaved edits before leaving the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__you_will_lose_changes">You\'ll lose the changes you\'ve made.</string>
+    <!-- Button in a dialog that throws away unsaved edits and leaves the screen they were made on in settings -->
+    <string name="AppSettingsNavigation__discard">Zahodit</string>
 </resources>
